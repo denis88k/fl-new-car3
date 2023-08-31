@@ -1,0 +1,112 @@
+.promo {
+	&-title {
+		font-weight: 700;
+		font-style: normal;
+		font-size: 25px;
+		line-height: 115%;
+		color: var(--text-black);
+	}
+
+	&-btn {
+		display: flex;
+		align-items: center;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 18px;
+		line-height: 100%;
+		color: var(--primary-color);
+		cursor: pointer;
+
+		&::after {
+			right: -15px;
+			top: 4px;
+			background-image: url('./../img/arrow_right_red.svg');
+			transition: all 0.2s linear;
+		}
+
+		&:hover::after {
+			right: -20px;
+		}
+	}
+}
+
+.arrow-right {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		width: 6.79px;
+		height: 11px;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+}
+
+@media screen and (max-width: 420px) {
+	.promo {
+		&-title {
+			font-size: 22px;
+		}
+	}
+}
+
+.show_anim {
+	animation-name: show_anim;
+	animation-duration: 0.7s;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+}
+
+@keyframes show_anim {
+	0% {
+		opacity: 0.5;
+		transform: translateY(300px) scale(0.9);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+.btn-red {
+	border-radius: 15px;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 135%;
+	text-align: center;
+	color: var(--white);
+	background-color: var(--primary-color);
+	transition: all 0.3s ease;
+	cursor: pointer;
+	@include adaptiv-value(padding-top, 20, 18, 1);
+	@include adaptiv-value(padding-bottom, 20, 18, 1);
+
+	&:hover {
+		background-color: #ff0b0b;
+	}
+}
+
+.btn-white {
+	border: 1px solid var(--primary-color);
+	border-radius: 20px;
+	padding-top: 22px;
+	padding-bottom: 22px;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 135%;
+	text-align: center;
+	color: var(--primary-color);
+	background-color: var(--white);
+	transition: all 0.3s ease;
+	@include adaptiv-value(border-radius, 20, 15, 1);
+	cursor: pointer;
+
+	// &:hover {
+	// border-color: var(--white);
+	// color: var(--white);
+	// background-color: var(--primary-color);
+	// }
+}

@@ -1,0 +1,22 @@
+<div class="chat-messages" data-chat="0">
+	<div class="chat__message-block">
+		<p class="chat__message chat__message-consultant msg-show">
+			Здравствуйте!<br>Меня зовут Ирина. Я онлайн-консультант автосалона “Ауди Москва”. Я помогу вам подобрать авто с
+			пробегом на выгодных условиях
+		</p>
+	</div>
+
+	<div class="chat__message-block">
+		<p class="chat__message chat__message-consultant msg-show">
+			Какую модель автомобиля вы рассматриваете? Выберите модель из списка, нажав на нее:
+		</p>
+	</div>
+
+	@include('./_cars.html')
+
+	@include('./_chat_message-client.html',
+	{
+	'text':
+	'Granta'
+	})
+</div>

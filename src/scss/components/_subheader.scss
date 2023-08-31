@@ -1,0 +1,60 @@
+.title-main {
+	@include adaptiv-value(font-size, 60, 32, 1);
+	@include adaptiv-value(margin-top, 55, 34, 1);
+	@include adaptiv-value(margin-bottom, 44, 36, 1);
+	font-weight: 500;
+	line-height: 110%;
+	text-align: center;
+	color: var(--text-black);
+	@media screen and (max-width: 420px) {
+		font-weight: 700;
+		line-height: 115%;
+	}
+}
+
+.subheader {
+	&__title {
+	}
+
+	&__subtitle {
+	}
+}
+
+.container {
+}
+
+.show {
+	&_anim {
+	}
+}
+
+.timer-promo {
+	&__inner {
+	}
+
+	&__text {
+	}
+}
+
+.timer {
+	&__value {
+	}
+
+	&__day {
+	}
+
+	&__day-text {
+	}
+
+	&__hour {
+	}
+
+	&__hour-text {
+	}
+
+	&__min {
+	}
+
+	&__min-text {
+	}
+}
