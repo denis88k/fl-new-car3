@@ -1,0 +1,33 @@
+.filter {
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		@include adaptiv-value(margin-top, 30, 15, 1);
+		margin-bottom: 25px;
+	}
+}
+
+// .years {
+// }
+
+// .mileage {
+// }
+
+.filter__btn-reset {
+	display: flex;
+	align-items: center;
+	border-radius: 62px;
+	padding: 14px 52px;
+	font-weight: 550;
+	font-size: 18px;
+	line-height: 135%;
+	text-align: center; 
+	text-decoration-line: underline;
+	color: #282626b3;
+	background-color: #F7F7F7;
+	cursor: pointer;
+	@media screen and (max-width: 750px) {
+		padding: 14px 130px;
+
+	}
+}

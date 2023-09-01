@@ -1,41 +1,49 @@
+@import './years_mileage'; // wrapper
+.choice-container{
+
+}
+
 .choice-car {
 	display: flex;
 	flex-direction: column;
 
 	&__blocks {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: 20px;
+		@include adaptiv-value-in-min(margin-left, -99, -15, 940, 375);
+		@include adaptiv-value-in-min(margin-right, -99, -15, 940, 375);
+		@media screen and (max-width: 620px) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		// @include adaptiv-value-in-min(padding-left, 99, 15, 940, 375);
+		// @include adaptiv-value-in-min(padding-right, 99, 15, 940, 375);
+		// @include adaptiv-value(padding-top, 10, 15, 1);
+		// @include adaptiv-value(padding-bottom, 10, 15, 1);
 	}
 
 	&__block {
 		display: flex;
-		column-gap: 30px;
-		align-items: center;
+		flex-direction: column;
+		grid-column: 3 span;
+		@media screen and (max-width: 620px) {
+			grid-column: 4 span;
+		}
+		
+		border-radius: 10px;
+		background: rgba(0, 0, 0, 0.03);
 		transition: all 0.3s ease;
 		cursor: pointer;
-		row-gap: 15px;
 		@include adaptiv-value(border-radius, 45, 25, 1);
-		@include adaptiv-value-in-min(margin-left, -120, -15, 940, 375);
-		@include adaptiv-value-in-min(margin-right, -120, -15, 940, 375);
-		@include adaptiv-value-in-min(padding-left, 120, 15, 940, 375);
-		@include adaptiv-value-in-min(padding-right, 120, 15, 940, 375);
-		@include adaptiv-value(padding-top, 10, 15, 1);
-		@include adaptiv-value(padding-bottom, 10, 15, 1);
 		@media screen and (max-width: 670px) {
 			flex-direction: column;
 		}
 	}
 
 	&__img {
-		// width: 100%;
-		// max-width: 340px;
-		width: 340px;
-		height: 275px;
-
-		// he
-		// @media screen and (max-width: 670px) {
-		// 	min-width: 100%;
-		// }
+		// width: 439px;
+		// height: 326px;
 	}
 
 	&__swiper {
@@ -45,8 +53,8 @@
 
 		// width: 100%;
 		// height: 100%;
-		width: 340px;
-		height: 275px;
+		width: 439px;
+		height: 326px;
 	}
 
 	&__wrapper {
@@ -82,7 +90,8 @@
 	}
 
 	&__slide-img img {
-		border-radius: 20px;
+		border-radius: 10px;
+		width: 100%;
 		height: 100%;
 		object-fit: cover;
 	}
@@ -97,14 +106,14 @@
 		opacity: 1;
 	}
 
+	// инфо
 	&__info {
 		display: flex;
 		flex-direction: column;
-		align-items: flex-start;
-
-		// row-gap: 12px;
-		@media screen and (max-width: 670px) {
-			align-items: stretch;
+		padding: 20px;
+		@media screen and (max-width: 480px) {
+			padding-right: 0;
+			padding-left: 0;
 		}
 	}
 
@@ -113,27 +122,56 @@
 		font-size: 24px;
 		line-height: 130%;
 		color: var(--text-black);
-		transition: all 0.3s ease;
 	}
 
 	&__price {
-		font-weight: 700;
-		font-size: 24px;
-		line-height: 130%;
-		color: var(--primary-color);
-		@include adaptiv-value(margin-top, 7, 10, 1);
-		@include adaptiv-value(margin-bottom, 15, 10, 1);
+		display: flex;
+		align-items: center;
+		margin-top: 10px;
+		margin-bottom: 17px;
 	}
 
 	&__price-total {
-		margin-right: 25px;
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 130%;
+		color: #E63535; 
 	}
 
-	// &__price-month {
-	// }
+	&__discount {
+		margin-right: 15px;
+	}
+
+	&__price-old {
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 135%;
+		text-decoration-line: line-through;
+		color: var(--text-grey);
+	}
+
+	&__conditions {
+		display: flex;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 135%;
+		color: #727171;
+		gap: 12px;
+
+		.condition{
+			border-radius: 25px;
+			padding: 3px 7px;
+			background: var(--white);
+		}
+		@media screen and (max-width: 670px) {
+
+		}
+	}
 
 	&__mileage-owner {
 		display: flex;
+		margin-top: 15px;
+		margin-bottom: 7px;
 		font-weight: 400;
 		font-size: 18px;
 		line-height: 135%;
@@ -144,29 +182,82 @@
 		margin-right: 25px;
 	}
 
-	// &__owner {
-	// }
+	&__owner {
+	}
 
 	&__charact {
 		font-weight: 400;
 		font-size: 18px;
 		line-height: 135%;
 		color: var(--text-grey);
-		@include adaptiv-value(margin-top, 7, 5, 1);
-		@include adaptiv-value(margin-bottom, 17, 15, 1);
+	}
+
+	&__btn-buy {
+		margin-top: 25px;
+		margin-bottom: 15px;
+		border-radius: 51px;
+		padding: 20px 115px;
+		font-weight: 550;
+		font-size: 19px;
+		line-height: 135%;
+		text-align: center;
+		color: var(--white);
+		background-color: var(--primary-color);
+
+	}
+
+	&__bottom {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+		
+
+	&__tel-text {
+		display: flex;
+		flex-direction: column;
+		margin-left: 16px;
+
 	}
 
 	&__tel {
-		border-radius: 15px;
-		padding: 11px 15px;
+		position: relative;
 		font-weight: 700;
+		font-size: 20px;
+		line-height: 130%;
+		color: var(--text-black);
+
+		&::before{
+			content: '';
+			position: absolute;
+			left: -12px;
+			top: 15px;
+			border-radius: 50%;
+			width: 6px;
+			height: 6px;
+			background-color: #33CD5E;
+		}
+	}
+
+	&__tel-under {
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 135%;
+		color: var(--text-grey);
+	}
+
+	&__btn-order {
+		border-radius: 62px;
+		padding: 18px 33px;
+		font-weight: 550;
 		font-size: 18px;
 		line-height: 135%;
 		text-align: center;
-		color: var(--text-black);
-		background-color: var(--bg-color);
-		transition: all 0.3s ease;
+		text-decoration-line: underline;
+		color: rgba(40, 38, 38, 0.70);
+		background-color: var(--white);
 	}
+	
 
 	&__block:hover,
 	&__block.active {
@@ -194,3 +285,4 @@
 		@include adaptiv-value(margin-top, 20, 15, 1);
 	}
 }
+

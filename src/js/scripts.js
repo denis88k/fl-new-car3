@@ -1,13 +1,13 @@
 import { chat2 } from './components/chat.js';
-import { mileageInit } from './components/mileage.js';
-import { ownerInit } from './components/owner.js';
+// import { mileageInit } from './components/mileage.js';
+// import { ownerInit } from './components/owner.js';
 // import { sliderMethod } from './components/report.js';
 import stickyConsultant from './components/stickyConsultant.js';
-import { blockVisible, btnShowMoreClick } from './components/visibleBlockAndBtnShowMore.js';
+// import { blockVisible, btnShowMoreClick } from './components/visibleBlockAndBtnShowMore.js';
 import { yearsInit } from './components/years.js';
 
 // NOTE:===========CHAT start===========
-chat2();
+// chat2();
 // ========= sticky consultant при скролле страницы=========
 window.addEventListener('scroll', stickyConsultant);
 // NOTE: =================MODEL CHOICE===============
@@ -15,7 +15,7 @@ window.addEventListener('scroll', stickyConsultant);
 
 // NOTE: =================YEARS===============
 
-yearsInit();
+// yearsInit();
 //* yearsShowSelect();
 // ====== обнуление инпута года выпуска/поколений ======
 // // resetYears()
@@ -34,7 +34,7 @@ yearsInit();
 
 // // NOTE: ===========ПРОБЕГ (mileage)========
 // // ===========INPUT ПРОБЕГА===========
-mileageInit();
+// mileageInit();
 // mileageInput();
 // // ======CHECKBOX ПРОБЕГА======
 // checkboxComponent('mileage');
@@ -42,27 +42,8 @@ mileageInit();
 // // resetMileage()
 // // ==================================
 
-// // NOTE: ===========ВЛАДЕЛЕЦ (owner)===========
-ownerInit();
-// // ======CHECKBOX владелец======
-// checkboxComponent('owner');
-// // ======ответ сообщений владелец======
-// owner();
-// // для обнуления вызывать: =>
-// // resetOwner()
-// // ================================
-
 // // NOTE: ========CHOICE CAR=============
 // // =============swiper============
 // заменён на fancy box-carousel
 // sliderMethod.init();
 // // ==========================
-// // NOTE: ========= REPORT =========
-
-// // ===========кнопка "показать все сведения" в секции report__info===========
-const textVisible = 'Показать все сведения';
-blockVisible('.report__info-block', '.report__info-btn', 3, textVisible);
-// // для обнуления вызывать: =>
-// resetReport()
-
-document.querySelector('.report__info-btn').addEventListener('click', btnShowMoreClick.bind(null, '.report__info-block', 3, 'Показать все сведения'));

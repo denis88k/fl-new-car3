@@ -1,3 +1,5 @@
+import './components/timer.js'; // таймер
+
 import modal from './components/modal.js';
 
 // promo-header

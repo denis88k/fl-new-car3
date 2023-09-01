@@ -1,8 +1,8 @@
 import { addClass, closestElement, containsClass, removeClass, removeClassArray } from './helpers.js';
-import { mileageDefaultState } from './mileage.js';
-import { ownerDefaultState } from './owner.js';
-import { resetReport } from './report.js'; // из-за него лагало
-import { yearsDefaultState } from './years.js';
+// import { mileageDefaultState } from './mileage.js';
+// import { ownerDefaultState } from './owner.js';
+// import { resetReport } from './report.js'; // из-за него лагало
+// import { yearsDefaultState } from './years.js';
 
 // =========скроллы========
 // скролл до начала сообщения от консультанта +10px вверх
@@ -94,24 +94,6 @@ const resetActiveAllBlock = currentNumber => {
 			const BlocksChoice = msgBlocksChoice.querySelectorAll('.block-choice');
 			BlocksChoice && removeClassArray(BlocksChoice, 'active');
 		}
-		// NOTE: блок MULTi
-		// const msgBlockMulti = chats[i].querySelector('.chat__choice-multi');
-		// if (msgBlockMulti) {
-		// 	console.log(msgBlockMulti);
-		// 	if (msgBlockMulti.querySelector('.years__block')) {
-		// 		console.log('years__block reset');
-		// 		// resetYears();
-		// 	}
-		// 	if (msgBlockMulti.querySelector('.mileage__block')) {
-		// 		console.log('mileage__block reset');
-		// 		// resetMileage();
-		// 	}
-		// 	if (msgBlockMulti.querySelector('.owner__block')) {
-		// 		console.log('owner__block reset');
-		// 		// resetOwner();
-		// 	}
-
-		// }
 
 		// сообщение ответа клиента
 		const msgClient = chats[i].querySelector('.chat__message-client');
