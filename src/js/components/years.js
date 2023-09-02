@@ -1,19 +1,15 @@
-import { checkboxComponent } from './checkbox.js';
-import { addClass, closestElement, containsClass, removeClass, removeClassArray, resetAnswer, toggleClass } from './helpers.js';
-import { blockVisible, btnShowMoreClick } from './visibleBlockAndBtnShowMore.js';
+import { addClass, closestElement, containsClass, removeClass, removeClassArray, toggleClass } from './helpers.js';
 
 const yearsShowSelect = () => {
-	let selectFrom = 0;
-	let selectTo = 0;
-	let isBetween = () => false;
 	// let count = 0;
 
 	const selects = document.querySelector('.years__selects');
+	const inputTextFrom = document.querySelector('.input-text-from');
 
 	selects.addEventListener('click', e => {
 		const selectInput = closestElement(e.target, 'years__input');
 		const YearsOption = closestElement(e.target, 'years__option');
-
+		// если нажали на инпут год
 		if (selectInput) {
 			// console.log('selectInput====');
 			// count++;
@@ -23,6 +19,7 @@ const yearsShowSelect = () => {
 			// console.log(selectFrom, '-', selectTo, 'count:', count);
 		}
 
+		// если выбран год
 		if (YearsOption) {
 			const selector = YearsOption.closest('.years__select');
 			const options = selector.querySelectorAll('.option');
@@ -32,6 +29,7 @@ const yearsShowSelect = () => {
 			const optionContainsFrom = containsClass(YearsOption.parentElement, 'select-from');
 			const optionContainsTo = containsClass(YearsOption.parentElement, 'select-to');
 			const checkboxBlocks = document.querySelectorAll('.years__checkbox-block'); // блоки checkbox с поколениями
+			// если нажали на год
 			if (containsClass(YearsOption, 'option')) {
 				// console.log('option====', YearsOption);
 				// count++;
@@ -39,33 +37,17 @@ const yearsShowSelect = () => {
 				addClass(option, 'active');
 				inputYears.innerHTML = option.dataset.value;
 
-				// if (optionContainsFrom) {
-				// 	selectFrom = Number(option.dataset.value);
-				// }
-				// if (optionContainsTo) {
-				// 	selectTo = Number(option.dataset.value);
-				// }
-
-				// updateCheckboxActive(checkboxBlocks, selectFrom, selectTo, answerMessage);
-				// console.log(selectFrom, '-', selectTo, 'count:', count);
+				if (optionContainsFrom) {
+					inputTextFrom.innerHTML = 'до';
+				}
 			}
-
+			// если нажали на "очистить"
 			if (containsClass(YearsOption, 'clear')) {
 				// console.log('optionClear====');
 				// count++;
-
+				inputTextFrom.innerHTML = 'Год до';
 				inputYears.innerHTML = '';
-				// if (optionContainsFrom) {
-				// 	selectFrom = 0;
-				// 	updateCheckboxActive(checkboxBlocks, selectFrom, selectTo, answerMessage);
-				// }
-				// if (optionContainsTo) {
-				// 	selectTo = 0;
-				// 	updateCheckboxActive(checkboxBlocks, selectFrom, selectTo, answerMessage);
-				// }
-				// console.log(selectFrom, '-', selectTo, 'count:', count);
 			}
-			// если есть selectFrom, selectTo, то 1-2
 		}
 		return;
 	});
@@ -86,9 +68,6 @@ const yearsShowSelect = () => {
 
 const yearsInit = () => {
 	yearsShowSelect();
-	// checkboxComponent('years');
-	// const textOpen = 'Показать все поколения';
-	// document.querySelector('.years__show-more').addEventListener('click', btnShowMoreClick.bind(null, '.years__checkbox-block', 6, textOpen));
 };
 
 const yearsDefaultState = () => {
@@ -101,15 +80,6 @@ const yearsDefaultState = () => {
 	});
 	document.querySelector('.select-from>.clear').click();
 	document.querySelector('.select-to>.clear').click();
-
-	// const textOpen = 'Показать все поколения';
-	// blockVisible('.years__checkbox-block', '.years__show-more', 6, textOpen);
-	// resetAnswer('years__block', 'Любой год');
 };
-
-// const resetYears = () => {
-// const textOpen = 'Показать все поколения';
-// blockVisible('.years__checkbox-block', '.years__show-more', 6, textOpen);
-// };
 
 export { yearsDefaultState, yearsInit, yearsShowSelect };

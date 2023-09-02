@@ -1,21 +1,26 @@
 import { chat2 } from './components/chat.js';
+import { filter } from './components/filter.js';
 // import { mileageInit } from './components/mileage.js';
 // import { ownerInit } from './components/owner.js';
 // import { sliderMethod } from './components/report.js';
 import stickyConsultant from './components/stickyConsultant.js';
 // import { blockVisible, btnShowMoreClick } from './components/visibleBlockAndBtnShowMore.js';
-import { yearsInit } from './components/years.js';
+// import { yearsInit } from './components/years.js';
 
 // NOTE:===========CHAT start===========
 // chat2();
 // ========= sticky consultant при скролле страницы=========
 window.addEventListener('scroll', stickyConsultant);
+
+// =============FILTER==================
+filter();
+
 // NOTE: =================MODEL CHOICE===============
 // ========================================
 
 // NOTE: =================YEARS===============
 
-yearsInit();
+// yearsInit();
 //* yearsShowSelect();
 // ====== обнуление инпута года выпуска/поколений ======
 // // resetYears()
@@ -31,16 +36,6 @@ yearsInit();
 // // для обнуления вызывать: =>
 // // blockVisible('years__checkbox-block', 'years__show-more', 6, 'Показать все сведения');
 // // =============================
-
-// // NOTE: ===========ПРОБЕГ (mileage)========
-// // ===========INPUT ПРОБЕГА===========
-// mileageInit();
-// mileageInput();
-// // ======CHECKBOX ПРОБЕГА======
-// checkboxComponent('mileage');
-// // ======обнуление инпута пробега======
-// // resetMileage()
-// // ==================================
 
 // // NOTE: ========CHOICE CAR=============
 // // =============swiper============
