@@ -11,9 +11,10 @@
 		display: grid;
 		grid-template-columns: repeat(6, 1fr);
 		gap: 20px;
-		@include adaptiv-value-in-min(margin-left, -99, -15, 940, 375);
-		@include adaptiv-value-in-min(margin-right, -99, -15, 940, 375);
-		@media screen and (max-width: 620px) {
+		@include adaptiv-value-in-min(margin-left, -99, 0, 940, 375);
+		@include adaptiv-value-in-min(margin-right, -99, 0, 940, 375);
+		@media screen and (max-width: 800px) {
+			justify-items: center;
 			grid-template-columns: repeat(4, 1fr);
 		}
 
@@ -27,23 +28,41 @@
 		display: flex;
 		flex-direction: column;
 		grid-column: 3 span;
-		@media screen and (max-width: 620px) {
+		@media screen and (max-width: 800px) {
 			grid-column: 4 span;
+			width: 100%;
 		}
 		
 		border-radius: 10px;
-		background: rgba(0, 0, 0, 0.03);
+		background-color: rgba(0, 0, 0, 0.03);
 		transition: all 0.3s ease;
 		cursor: pointer;
 		@include adaptiv-value(border-radius, 45, 25, 1);
-		@media screen and (max-width: 670px) {
-			flex-direction: column;
+
+		@media screen and (max-width: 500px) {
+			background-color: transparent;
+
 		}
 	}
 
 	&__img {
-		// width: 439px;
-		// height: 326px;
+		position: relative;
+
+		&::after{
+			content: '';
+			position: absolute;
+			right: 50px;
+			top: 25px;
+			z-index: 40;
+			display: block;
+			width: 213.521px;
+			height: 23px;
+			background: url('./../img/checked_car.png') no-repeat center/contain;
+			@media screen and (max-width: 800px) {
+				right: 20px;
+				top: 18px;
+			}
+		}
 	}
 
 	&__swiper {
@@ -53,7 +72,7 @@
 
 		// width: 100%;
 		// height: 100%;
-		width: 439px;
+		width: 100%;
 		height: 326px;
 	}
 
@@ -111,7 +130,7 @@
 		display: flex;
 		flex-direction: column;
 		padding: 20px;
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 500px) {
 			padding-right: 0;
 			padding-left: 0;
 		}
@@ -129,6 +148,9 @@
 		align-items: center;
 		margin-top: 10px;
 		margin-bottom: 17px;
+		@media screen and (max-width: 480px) {
+			margin-top: 5px;
+		}
 	}
 
 	&__price-total {
@@ -138,11 +160,12 @@
 		color: #E63535; 
 	}
 
-	&__discount {
-		margin-right: 15px;
-	}
+	// &__discount {
+	// 	margin-right: 15px;
+	// }
 
 	&__price-old {
+		margin-left: 15px;
 		font-weight: 400;
 		font-size: 16px;
 		line-height: 135%;
@@ -162,10 +185,11 @@
 			border-radius: 25px;
 			padding: 3px 7px;
 			background: var(--white);
+			@media screen and (max-width: 490px) {
+				background-color: #F7F7F7;
+			}
 		}
-		@media screen and (max-width: 670px) {
 
-		}
 	}
 
 	&__mileage-owner {
@@ -176,14 +200,18 @@
 		font-size: 18px;
 		line-height: 135%;
 		color: var(--text-grey);
+		@media screen and (max-width: 800px) {
+			margin-top: 11px;
+			margin-bottom: 5px;
+		}
 	}
 
 	&__mileage {
 		margin-right: 25px;
 	}
 
-	&__owner {
-	}
+	// &__owner {
+	// }
 
 	&__charact {
 		font-weight: 400;
@@ -203,7 +231,11 @@
 		text-align: center;
 		color: var(--white);
 		background-color: var(--primary-color);
-
+		cursor: pointer;
+		@media screen and (max-width: 800px) {
+			margin-top: 19px;
+			font-size: 18px;
+		}
 	}
 
 	&__bottom {
@@ -211,13 +243,11 @@
 		align-items: center;
 		justify-content: space-between;
 	}
-		
 
 	&__tel-text {
 		display: flex;
 		flex-direction: column;
 		margin-left: 16px;
-
 	}
 
 	&__tel {
@@ -226,12 +256,13 @@
 		font-size: 20px;
 		line-height: 130%;
 		color: var(--text-black);
+		cursor: pointer;
 
 		&::before{
 			content: '';
 			position: absolute;
 			left: -12px;
-			top: 15px;
+			top: 12px;
 			border-radius: 50%;
 			width: 6px;
 			height: 6px;
@@ -248,7 +279,7 @@
 
 	&__btn-order {
 		border-radius: 62px;
-		padding: 18px 33px;
+		padding: 18px 30px;
 		font-weight: 550;
 		font-size: 18px;
 		line-height: 135%;
@@ -256,6 +287,10 @@
 		text-decoration-line: underline;
 		color: rgba(40, 38, 38, 0.70);
 		background-color: var(--white);
+		cursor: pointer;
+		@media screen and (max-width: 500px) {
+			background-color: #F7F7F7;
+		}
 	}
 	
 
@@ -269,7 +304,7 @@
 
 		.choice-car__tel {
 			color: var(--primary-color);
-			background-color: var(--white);
+			background-color: transparent;
 		}
 
 		.choice-car__mileage-owner {

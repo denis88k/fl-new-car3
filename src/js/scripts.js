@@ -15,7 +15,7 @@ window.addEventListener('scroll', stickyConsultant);
 
 // NOTE: =================YEARS===============
 
-// yearsInit();
+yearsInit();
 //* yearsShowSelect();
 // ====== обнуление инпута года выпуска/поколений ======
 // // resetYears()

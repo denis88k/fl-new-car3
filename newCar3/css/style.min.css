@@ -2213,8 +2213,9 @@ body._lock {
   margin-top: 15px;
   gap: 20px;
 }
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 800px) {
   .car-card__blocks {
+    justify-items: center;
     grid-template-columns: repeat(4, 1fr);
   }
 }
@@ -2222,7 +2223,7 @@ body._lock {
   grid-column: 3 span;
   cursor: pointer;
 }
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 800px) {
   .car-card__block {
     grid-column: 4 span;
   }
@@ -2304,9 +2305,68 @@ body._lock {
   color: var(--primary-color);
 }
 
-.years__block {
+.filter {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+}
+.filter__inner {
+  display: flex;
+  column-gap: 25px;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  row-gap: 10px;
+  column-gap: 25px;
+  margin-top: 30px;
+  margin-left: -89px;
+  margin-right: -89px;
+}
+@media (max-width: 1420px) {
+  .filter__inner {
+    column-gap: calc(0px + 25 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 1420px) {
+  .filter__inner {
+    margin-top: calc(15px + 15 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 940px) {
+  .filter__inner {
+    margin-left: calc(0px + -89 * ((100vw - 375px) / 565));
+  }
+}
+@media (max-width: 940px) {
+  .filter__inner {
+    margin-right: calc(0px + -89 * ((100vw - 375px) / 565));
+  }
+}
+@media screen and (max-width: 760px) {
+  .filter__inner {
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 345px;
+  }
+}
+.filter__input {
+  border: 0.5px solid #E0E0E0;
+  padding-top: 15px;
+  padding-bottom: 13px;
+  padding-left: 13px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 135%;
+  color: #7F7F7F;
+  transition: all 0.2s ease;
+}
+
+.years {
+  width: 289px;
+}
+@media screen and (max-width: 760px) {
+  .years {
+    width: 100%;
+  }
 }
 .years__selects {
   display: flex;
@@ -2320,36 +2380,11 @@ body._lock {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid var(--border-color);
-  transition: all 0.2s ease;
+  padding-right: 12px;
   cursor: pointer;
-  padding-top: 25px;
-  padding-bottom: 24px;
-  padding-left: 25px;
-  padding-right: 38.5px;
-}
-@media (max-width: 1420px) {
-  .years__input {
-    padding-top: calc(21px + 4 * ((100vw - 320px) / 1100));
-  }
-}
-@media (max-width: 1420px) {
-  .years__input {
-    padding-bottom: calc(21px + 3 * ((100vw - 320px) / 1100));
-  }
-}
-@media (max-width: 1420px) {
-  .years__input {
-    padding-left: calc(15px + 10 * ((100vw - 320px) / 1100));
-  }
-}
-@media (max-width: 1420px) {
-  .years__input {
-    padding-right: calc(26px + 12.5 * ((100vw - 320px) / 1100));
-  }
 }
 .years__input .arrow-input {
-  stroke: #cdcdcd;
+  stroke: #757575;
   transition: all 0.3s ease;
 }
 .years__select-item:nth-child(1) .years__input {
@@ -2360,13 +2395,6 @@ body._lock {
   margin-left: -1px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-}
-.years__input-text {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 100%;
-  color: var(--text-grey);
-  transition: all 0.2s ease;
 }
 .years__input:hover {
   z-index: 10;
@@ -2406,14 +2434,14 @@ body._lock {
   transition: all 0.3s ease-in-out;
 }
 .years__select.active {
-  z-index: 10;
+  z-index: 45;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 .years__option {
-  padding-right: 30px;
-  padding-left: 44px;
+  padding-right: 20px;
+  padding-left: 30px;
   font-weight: 400;
   font-size: 18px;
   line-height: 205%;
@@ -2427,7 +2455,7 @@ body._lock {
 .years__option.clear {
   color: var(--text-grey);
   background-image: url("./../img/close-icon.svg");
-  background-position: left 17px center;
+  background-position: left 10px center;
   background-size: 13px 13px;
   background-repeat: no-repeat;
 }
@@ -2435,193 +2463,17 @@ body._lock {
   color: var(--white);
   background-color: var(--primary-color);
 }
-.years__checkbox {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 25px;
-  margin-bottom: 20px;
-}
-@media (max-width: 1420px) {
-  .years__checkbox {
-    margin-top: calc(10px + 15 * ((100vw - 320px) / 1100));
-  }
-}
-@media (max-width: 1420px) {
-  .years__checkbox {
-    margin-bottom: calc(15px + 5 * ((100vw - 320px) / 1100));
-  }
-}
-@media screen and (max-width: 715px) {
-  .years__checkbox {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-}
-.years__checkbox-block {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  grid-column: 1 span;
-  border: 1px solid var(--choice-multi);
-  border-radius: 10px;
-  padding: 15px 15px 19px 20px;
-  background-color: var(--choice-multi);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-20px);
-  transition: background-color 0.2s ease, transform 0.3s ease-in-out;
-  cursor: pointer;
-}
-.years__checkbox-block.isVisible {
-  position: static;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-@media screen and (max-width: 810px) {
-  .years__checkbox-block {
-    padding: 12px 10px 12px 12px;
-    transform: translateY(-10px);
-  }
-}
-.years__checkbox-top {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-.years__checkbox-year {
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 135%;
-  color: var(--text-black);
-  transition: all 0.3s ease;
-}
-@media screen and (max-width: 715px) {
-  .years__checkbox-year {
-    font-weight: 400;
-    font-size: 18px;
-  }
-}
-.years__checkbox-name {
-  overflow: hidden;
-  width: 157px;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 100%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  color: var(--text-grey);
-}
-@media screen and (max-width: 880px) {
-  .years__checkbox-name {
-    width: 125px;
-  }
-}
-.years__checkbox-check {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #e4e4e4;
-  border-radius: 5px;
-  width: 22px;
-  height: 22px;
-  background-color: var(--white);
-  transition: all 0.2s ease-in-out;
-}
-.years__checkbox-check svg {
-  opacity: 0;
-  visibility: hidden;
-}
-.years__checkbox-block.active {
-  border: 1px solid rgba(49, 51, 62, 0.5);
-  background-color: rgba(52, 52, 52, 0.07);
-}
-.years__checkbox-block.active .years__checkbox-name {
-  color: #31333e;
-}
-.years__checkbox-block.active .years__checkbox-check {
-  border: 1px solid #939499;
-  background-color: #f9f9f9;
-}
-.years__checkbox-block.active .years__checkbox-check svg {
-  opacity: 1;
-  visibility: visible;
-}
-.years__checkbox-block:hover {
-  background-color: rgba(52, 52, 52, 0.07);
-}
-.years__checkbox-block:hover .years__checkbox-name {
-  color: var(--text-grey);
-}
-.years__show-more {
-  margin-bottom: 22px;
-  position: relative;
-  display: flex;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 100%;
-  color: var(--primary-color);
-  background-color: var(--white);
-  cursor: pointer;
-}
-@media (max-width: 1420px) {
-  .years__show-more {
-    margin-bottom: calc(17px + 5 * ((100vw - 320px) / 1100));
-  }
-}
-.years__show-more .arrow-input {
-  margin-top: 5.8px;
-  margin-left: 8.5px;
-  stroke: var(--primary-color);
-}
-.years__show-more.active .arrow-input {
-  transform: rotate(180deg);
-}
 
-.mileage__block {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-@media (max-width: 1420px) {
-  .mileage__block {
-    row-gap: calc(10px + 10 * ((100vw - 320px) / 1100));
-  }
-}
 .mileage__inputs {
   display: flex;
 }
-.mileage__label {
-  flex: 1 1 50%;
-}
 .mileage__input {
-  position: relative;
-  border: 1px solid var(--border-color);
+  flex: 1 1 50%;
   width: 100%;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 100%;
+  max-width: 175px;
+}
+.mileage__input::placeholder {
   color: var(--text-grey);
-  transition: all 0.2s ease;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  padding-left: 25px;
-}
-@media (max-width: 1420px) {
-  .mileage__input {
-    padding-top: calc(21px + 4 * ((100vw - 320px) / 1100));
-  }
-}
-@media (max-width: 1420px) {
-  .mileage__input {
-    padding-bottom: calc(21px + 4 * ((100vw - 320px) / 1100));
-  }
-}
-@media (max-width: 1420px) {
-  .mileage__input {
-    padding-left: calc(15px + 10 * ((100vw - 320px) / 1100));
-  }
 }
 .mileage__input:focus {
   z-index: 10;
@@ -2633,139 +2485,25 @@ body._lock {
   border-color: var(--primary-color);
   color: var(--primary-color);
 }
-.mileage__label:nth-child(1) .mileage__input {
+.mileage .mileage__input:nth-child(1) {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.mileage__label:nth-child(2) .mileage__input {
+.mileage .mileage__input:nth-child(2) {
   margin-left: -1px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-}
-.mileage__checkbox {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-}
-@media (max-width: 1420px) {
-  .mileage__checkbox {
-    gap: calc(10px + 6 * ((100vw - 320px) / 1100));
-  }
-}
-@media screen and (max-width: 950px) {
-  .mileage__checkbox {
-    flex-direction: column;
-  }
-}
-.mileage__checkbox-block {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--choice-multi);
-  border-radius: 10px;
-  width: 100%;
-  background-color: var(--choice-multi);
-  cursor: pointer;
-  padding-top: 29px;
-  padding-bottom: 29px;
-  padding-left: 82px;
-  padding-right: 82px;
-}
-@media (max-width: 1420px) {
-  .mileage__checkbox-block {
-    padding-top: calc(17px + 12 * ((100vw - 320px) / 1100));
-  }
-}
-@media (max-width: 1420px) {
-  .mileage__checkbox-block {
-    padding-bottom: calc(17px + 12 * ((100vw - 320px) / 1100));
-  }
-}
-@media (max-width: 1420px) {
-  .mileage__checkbox-block {
-    padding-left: calc(94px + -12 * ((100vw - 320px) / 1100));
-  }
-}
-@media (max-width: 1420px) {
-  .mileage__checkbox-block {
-    padding-right: calc(94px + -12 * ((100vw - 320px) / 1100));
-  }
-}
-.mileage__checkbox-text {
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 135%;
-  text-align: center;
-  color: var(--text-black);
-}
-@media (max-width: 1420px) {
-  .mileage__checkbox-text {
-    font-size: calc(18px + 2 * ((100vw - 320px) / 1100));
-  }
-}
-.mileage__checkbox-check {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #e4e4e4;
-  border-radius: 5px;
-  width: 22px;
-  height: 22px;
-  background-color: var(--white);
-}
-@media screen and (max-width: 750px) {
-  .mileage__checkbox-check {
-    right: 10px;
-    top: 10px;
-  }
-}
-.mileage__checkbox-check svg {
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease-in-out;
-}
-.mileage__checkbox-block:hover {
-  background-color: rgba(52, 52, 52, 0.07);
-}
-.mileage__checkbox-block.active {
-  border: 1px solid rgba(49, 51, 62, 0.5);
-  background-color: rgba(52, 52, 52, 0.07);
-}
-.mileage__checkbox-block.active .mileage__checkbox-check {
-  border: 1px solid #939499;
-  background-color: #f9f9f9;
-}
-.mileage__checkbox-block.active .mileage__checkbox-check svg {
-  opacity: 1;
-  visibility: visible;
-}
-
-.filter__inner {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  margin-bottom: 25px;
-}
-@media (max-width: 1420px) {
-  .filter__inner {
-    margin-top: calc(15px + 15 * ((100vw - 320px) / 1100));
-  }
 }
 
 .filter__btn-reset {
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 62px;
   padding: 14px 52px;
   font-weight: 550;
   font-size: 18px;
   line-height: 135%;
-  text-align: center;
   text-decoration-line: underline;
   color: rgba(40, 38, 38, 0.7019607843);
   background-color: #F7F7F7;
@@ -2775,6 +2513,12 @@ body._lock {
   .filter__btn-reset {
     padding: 14px 130px;
   }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
 }
 
 .choice-car {
@@ -2790,16 +2534,17 @@ body._lock {
 }
 @media (max-width: 940px) {
   .choice-car__blocks {
-    margin-left: calc(-15px + -84 * ((100vw - 375px) / 565));
+    margin-left: calc(0px + -99 * ((100vw - 375px) / 565));
   }
 }
 @media (max-width: 940px) {
   .choice-car__blocks {
-    margin-right: calc(-15px + -84 * ((100vw - 375px) / 565));
+    margin-right: calc(0px + -99 * ((100vw - 375px) / 565));
   }
 }
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 800px) {
   .choice-car__blocks {
+    justify-items: center;
     grid-template-columns: repeat(4, 1fr);
   }
 }
@@ -2808,14 +2553,15 @@ body._lock {
   flex-direction: column;
   grid-column: 3 span;
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.03);
+  background-color: rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;
   cursor: pointer;
   border-radius: 45px;
 }
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 800px) {
   .choice-car__block {
     grid-column: 4 span;
+    width: 100%;
   }
 }
 @media (max-width: 1420px) {
@@ -2823,16 +2569,36 @@ body._lock {
     border-radius: calc(25px + 20 * ((100vw - 320px) / 1100));
   }
 }
-@media screen and (max-width: 670px) {
+@media screen and (max-width: 500px) {
   .choice-car__block {
-    flex-direction: column;
+    background-color: transparent;
+  }
+}
+.choice-car__img {
+  position: relative;
+}
+.choice-car__img::after {
+  content: "";
+  position: absolute;
+  right: 50px;
+  top: 25px;
+  z-index: 40;
+  display: block;
+  width: 213.521px;
+  height: 23px;
+  background: url("./../img/checked_car.png") no-repeat center/contain;
+}
+@media screen and (max-width: 800px) {
+  .choice-car__img::after {
+    right: 20px;
+    top: 18px;
   }
 }
 .choice-car__swiper {
   position: relative;
   display: block;
   overflow: hidden;
-  width: 439px;
+  width: 100%;
   height: 326px;
 }
 .choice-car__wrapper {
@@ -2881,7 +2647,7 @@ body._lock {
   flex-direction: column;
   padding: 20px;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   .choice-car__info {
     padding-right: 0;
     padding-left: 0;
@@ -2899,16 +2665,19 @@ body._lock {
   margin-top: 10px;
   margin-bottom: 17px;
 }
+@media screen and (max-width: 480px) {
+  .choice-car__price {
+    margin-top: 5px;
+  }
+}
 .choice-car__price-total {
   font-weight: 700;
   font-size: 24px;
   line-height: 130%;
   color: #E63535;
 }
-.choice-car__discount {
-  margin-right: 15px;
-}
 .choice-car__price-old {
+  margin-left: 15px;
   font-weight: 400;
   font-size: 16px;
   line-height: 135%;
@@ -2928,6 +2697,11 @@ body._lock {
   padding: 3px 7px;
   background: var(--white);
 }
+@media screen and (max-width: 490px) {
+  .choice-car__conditions .condition {
+    background-color: #F7F7F7;
+  }
+}
 .choice-car__mileage-owner {
   display: flex;
   margin-top: 15px;
@@ -2936,6 +2710,12 @@ body._lock {
   font-size: 18px;
   line-height: 135%;
   color: var(--text-grey);
+}
+@media screen and (max-width: 800px) {
+  .choice-car__mileage-owner {
+    margin-top: 11px;
+    margin-bottom: 5px;
+  }
 }
 .choice-car__mileage {
   margin-right: 25px;
@@ -2957,6 +2737,13 @@ body._lock {
   text-align: center;
   color: var(--white);
   background-color: var(--primary-color);
+  cursor: pointer;
+}
+@media screen and (max-width: 800px) {
+  .choice-car__btn-buy {
+    margin-top: 19px;
+    font-size: 18px;
+  }
 }
 .choice-car__bottom {
   display: flex;
@@ -2974,12 +2761,13 @@ body._lock {
   font-size: 20px;
   line-height: 130%;
   color: var(--text-black);
+  cursor: pointer;
 }
 .choice-car__tel::before {
   content: "";
   position: absolute;
   left: -12px;
-  top: 15px;
+  top: 12px;
   border-radius: 50%;
   width: 6px;
   height: 6px;
@@ -2993,7 +2781,7 @@ body._lock {
 }
 .choice-car__btn-order {
   border-radius: 62px;
-  padding: 18px 33px;
+  padding: 18px 30px;
   font-weight: 550;
   font-size: 18px;
   line-height: 135%;
@@ -3001,6 +2789,12 @@ body._lock {
   text-decoration-line: underline;
   color: rgba(40, 38, 38, 0.7);
   background-color: var(--white);
+  cursor: pointer;
+}
+@media screen and (max-width: 500px) {
+  .choice-car__btn-order {
+    background-color: #F7F7F7;
+  }
 }
 .choice-car__block:hover, .choice-car__block.active {
   background-color: var(--red-light);
@@ -3010,7 +2804,7 @@ body._lock {
 }
 .choice-car__block:hover .choice-car__tel, .choice-car__block.active .choice-car__tel {
   color: var(--primary-color);
-  background-color: var(--white);
+  background-color: transparent;
 }
 .choice-car__block:hover .choice-car__mileage-owner, .choice-car__block.active .choice-car__mileage-owner {
   color: var(--text-black);
