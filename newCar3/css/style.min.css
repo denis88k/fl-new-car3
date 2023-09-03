@@ -1378,7 +1378,7 @@ body._lock {
 }
 .form__item .just-validate-error-label {
   position: absolute;
-  left: 26px;
+  left: 21px;
   top: -9px;
   padding: 0 6px;
   font-size: 14px;
@@ -1440,7 +1440,7 @@ body._lock {
 }
 .input__tel ~ .input__tel-text {
   position: absolute;
-  left: 26px;
+  left: 21px;
   top: -9px;
   padding: 0 6px;
   font-weight: 400;
@@ -1497,14 +1497,9 @@ body._lock {
 .header__logo-text {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 450px;
 }
 .header__logo {
   margin-right: 30px;
-  width: 116px;
-  height: 71px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1514,13 +1509,17 @@ body._lock {
     margin-right: calc(15px + 15 * ((100vw - 320px) / 1100));
   }
 }
+.header__logo img {
+  width: 116px;
+  height: 71px;
+}
 @media (max-width: 1420px) {
-  .header__logo {
+  .header__logo img {
     width: calc(83px + 33 * ((100vw - 320px) / 1100));
   }
 }
 @media (max-width: 1420px) {
-  .header__logo {
+  .header__logo img {
     height: calc(51px + 20 * ((100vw - 320px) / 1100));
   }
 }
@@ -1530,6 +1529,8 @@ body._lock {
   font-style: normal;
   line-height: 150%;
   color: var(--text-black);
+  width: 100%;
+  max-width: 291px;
 }
 @media (max-width: 1420px) {
   .header__text {
@@ -1758,7 +1759,7 @@ body._lock {
 }
 .subheader__title {
   font-size: 60px;
-  font-weight: 550;
+  font-weight: 500;
   line-height: 110%;
   text-align: center;
   color: var(--text-black);
@@ -1778,7 +1779,7 @@ body._lock {
   font-size: 25px;
   max-width: 850px;
   margin-top: 20px;
-  font-weight: 550;
+  font-weight: 500;
   line-height: 150%;
   text-align: center;
   color: var(--text-grey);
@@ -1810,7 +1811,7 @@ body._lock {
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
-  padding: 15px 24px;
+  padding: 15px 24px 15px 16px;
   width: 463px;
   height: 110px;
   box-shadow: 0 4px 13px 0 rgba(0, 0, 0, 0.07);
@@ -1852,8 +1853,9 @@ body._lock {
 .timer {
   display: flex;
   border-radius: 10px;
-  width: 266px;
+  width: 100%;
   height: 80px;
+  max-width: 266px;
   box-shadow: 0 4px 13px 0 rgba(0, 0, 0, 0.09);
   background: var(--white);
 }
@@ -1865,7 +1867,7 @@ body._lock {
 }
 .timer-count {
   font-size: 42px;
-  margin-top: 7px;
+  margin-top: 4px;
   font-weight: 550;
   line-height: 46px;
   color: var(--primary-color);
@@ -1897,6 +1899,9 @@ body._lock {
   flex: 30%;
   flex-direction: column;
   align-items: center;
+}
+.timer__value:nth-child(1) {
+  margin-right: -7px;
 }
 .timer__value:nth-child(2) {
   border-right: 1px solid #D9D9D9;
@@ -2568,17 +2573,11 @@ input::-webkit-inner-spin-button {
   background-color: rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;
   cursor: pointer;
-  border-radius: 45px;
 }
 @media screen and (max-width: 800px) {
   .choice-car__block {
     grid-column: 4 span;
     width: 100%;
-  }
-}
-@media (max-width: 1420px) {
-  .choice-car__block {
-    border-radius: calc(25px + 20 * ((100vw - 320px) / 1100));
   }
 }
 @media screen and (max-width: 500px) {
@@ -2589,21 +2588,31 @@ input::-webkit-inner-spin-button {
 .choice-car__img {
   position: relative;
 }
-.choice-car__img::after {
-  content: "";
+.choice-car__img-watermark {
   position: absolute;
-  right: 50px;
+  right: 31px;
   top: 25px;
-  z-index: 40;
-  display: block;
-  width: 213.521px;
-  height: 23px;
-  background: url("./../img/checked_car.png") no-repeat center/contain;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 11px;
 }
 @media screen and (max-width: 800px) {
-  .choice-car__img::after {
+  .choice-car__img-watermark {
     right: 20px;
     top: 18px;
+  }
+}
+.choice-car__img-watermark .watermark-text {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 135%;
+  color: var(--text-black);
+}
+@media screen and (max-width: 800px) {
+  .choice-car__img-watermark .watermark-icon {
+    width: 18.521px;
+    height: 18.111px;
   }
 }
 .choice-car__swiper {
@@ -2778,7 +2787,7 @@ input::-webkit-inner-spin-button {
 .choice-car__tel {
   position: relative;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 19px;
   line-height: 130%;
   color: var(--text-black);
   cursor: pointer;

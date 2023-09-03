@@ -16,17 +16,20 @@
 	&__logo-text {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		@include maxwidth(450);
+
+		// @include maxwidth(450);
 	}
 
 	&__logo {
 		@include adaptiv-value(margin-right, 30, 15, 1);
-		@include adaptiv-value(width, 116, 83, 1);
-		@include adaptiv-value(height, 71, 51, 1);
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		img{
+			@include adaptiv-value(width, 116, 83, 1);
+			@include adaptiv-value(height, 71, 51, 1);
+		}
 	}
 
 	&__text {
@@ -35,6 +38,11 @@
 		font-style: normal;
 		line-height: 150%;
 		color: var(--text-black);
+		@include maxwidth(291);
+		@media screen and (max-width: 780px) {
+		// @include maxwidth(210);
+
+		}
 	}
 
 	&__tel {
