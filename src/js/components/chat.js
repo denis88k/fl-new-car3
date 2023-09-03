@@ -93,7 +93,8 @@ const resetActiveAllBlock = currentNumber => {
 		// сообщение ответа клиента
 		const msgClient = chats[i].querySelector('.chat__message-client');
 		removeClass(msgClient, 'msg-show');
-		console.log(i, 'i');
+		// console.log(i, 'i');
+
 		// очистка filter
 		if (i === 1) {
 			filterReset();
@@ -129,6 +130,7 @@ const chat3 = () => {
 				// анимация 'Ольга печатает...', задержка появления в 500мс
 				setTimeout(() => {
 					addClass(msgPrint, 'msg-print-show');
+					numberChat && msgPrint && scrollMsg(msgPrint);
 				}, 600);
 				// скрытие о печатании консультанта
 				// показ вопроса от консультанта
@@ -148,12 +150,7 @@ const chat3 = () => {
 	// ====NOTE: если номер чата равен 2 (последний пункт),
 	// то нужно показать эти блоки и выйти
 	if (numberChat === 2) {
-		console.log('last');
 		showLastChat(chat);
-		// setTimeout(() => {
-		// 	console.log('first');
-		// 	animShowChat = false;
-		// }, 2500 * msgBlocks.length + 950);
 		return;
 	}
 	if (numberChat === 0) {
@@ -175,7 +172,6 @@ const chat3 = () => {
 			msgBlockChoice && addClass(msgBlockChoice, 'msg-show');
 			setTimeout(() => {
 				// плавный скролл до начала нового блока чата с отступом
-				// console.log(chat, 'chat', numberChat, 'numberChat');
 				// console.log('вниз до нового блока чата');
 				numberChat && scrollChat(chat);
 			});
@@ -187,7 +183,7 @@ const chat3 = () => {
 
 	// ======NOTE: "блок с выборами"
 	if (msgBlockChoice) {
-		console.log('choice', animShowChat);
+		// console.log('choice', choice);
 
 		// блоки c вариантами выбора, за которыми нужно следить
 		// родитель блоков выбора
@@ -196,7 +192,7 @@ const chat3 = () => {
 		const blockChoiceAll = msgBlockChoice.querySelectorAll('.block-choice');
 
 		const blockChoiceClick = e => {
-			console.log(animShowChat, 'choice');
+			// console.log(animShowChat, 'choice');
 
 			if (
 				containsClass(e.target, 'choice-car__btn-buy') ||
@@ -220,7 +216,7 @@ const chat3 = () => {
 				// показываем сообщение ответ клиента
 				addClass(msgAnswer, 'msg-show');
 				// прокрутка вниз, до сообщения с ответом клиента, т.е. внизу окажется сообщение ответ клиента
-				console.log('вниз до сообщения ответа клиента');
+				// console.log('вниз до сообщения ответа клиента');
 				scrollEndChat();
 				// увеличиваем счётчик чата, чтобы запустить следующий чат
 				numberChat++;

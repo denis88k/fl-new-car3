@@ -2742,6 +2742,9 @@ input::-webkit-inner-spin-button {
 @media screen and (max-width: 800px) {
   .choice-car__btn-buy {
     margin-top: 19px;
+    padding-right: 20px;
+    padding-left: 20px;
+    width: 100%;
     font-size: 18px;
   }
 }
@@ -2755,6 +2758,11 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   margin-left: 16px;
 }
+@media screen and (max-width: 930px) {
+  .choice-car__tel-text {
+    margin-left: 11px;
+  }
+}
 .choice-car__tel {
   position: relative;
   font-weight: 700;
@@ -2763,11 +2771,16 @@ input::-webkit-inner-spin-button {
   color: var(--text-black);
   cursor: pointer;
 }
+@media screen and (max-width: 930px) {
+  .choice-car__tel {
+    font-size: 18px;
+  }
+}
 .choice-car__tel::before {
   content: "";
   position: absolute;
-  left: -12px;
-  top: 12px;
+  left: -11px;
+  top: 11px;
   border-radius: 50%;
   width: 6px;
   height: 6px;
@@ -2778,6 +2791,11 @@ input::-webkit-inner-spin-button {
   font-size: 16px;
   line-height: 135%;
   color: var(--text-grey);
+}
+@media screen and (max-width: 930px) {
+  .choice-car__tel-under {
+    font-size: 14px;
+  }
 }
 .choice-car__btn-order {
   border-radius: 62px;
@@ -2790,6 +2808,13 @@ input::-webkit-inner-spin-button {
   color: rgba(40, 38, 38, 0.7);
   background-color: var(--white);
   cursor: pointer;
+}
+@media screen and (max-width: 930px) {
+  .choice-car__btn-order {
+    padding-right: 21px;
+    padding-left: 21px;
+    font-size: 16px;
+  }
 }
 @media screen and (max-width: 500px) {
   .choice-car__btn-order {
@@ -2813,8 +2838,8 @@ input::-webkit-inner-spin-button {
   color: var(--text-black);
 }
 .choice-car__btn {
-  max-width: 700px;
   width: 100%;
+  max-width: 700px;
   margin-top: 20px;
 }
 @media (max-width: 1420px) {
