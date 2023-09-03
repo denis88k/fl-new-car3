@@ -121,3 +121,23 @@
 	color: var(--white);
 	background-color: #E63535;
 }
+
+.dot{
+	&::before{
+		content: '';
+		position: absolute;
+		border-radius: 50%;
+		background-color: #33CD5E;
+		animation: blink 1s infinite;
+	}
+}
+
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}

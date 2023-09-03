@@ -1101,6 +1101,22 @@ body._lock {
   background-color: #E63535;
 }
 
+.dot::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background-color: #33CD5E;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .modal {
   z-index: -100;
   display: none;
@@ -1826,15 +1842,11 @@ body._lock {
     margin-top: 15px;
   }
 }
-.timer-promo__text::after {
-  content: "";
-  position: absolute;
+.timer-promo__text.dot::before {
   left: -20px;
   top: 10px;
-  border-radius: 50%;
   width: 7px;
   height: 7px;
-  background-color: #33CD5E;
 }
 
 .timer {
@@ -2776,15 +2788,17 @@ input::-webkit-inner-spin-button {
     font-size: 18px;
   }
 }
-.choice-car__tel::before {
-  content: "";
-  position: absolute;
-  left: -11px;
-  top: 11px;
-  border-radius: 50%;
+.choice-car__tel.dot::before {
+  left: -13px;
+  top: 12px;
   width: 6px;
   height: 6px;
-  background-color: #33CD5E;
+}
+@media screen and (max-width: 930px) {
+  .choice-car__tel.dot::before {
+    left: -11px;
+    top: 11px;
+  }
 }
 .choice-car__tel-under {
   font-weight: 400;

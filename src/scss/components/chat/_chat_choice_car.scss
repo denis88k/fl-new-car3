@@ -259,15 +259,15 @@
 			font-size: 18px;
 		}
 
-		&::before{
-			content: '';
-			position: absolute;
-			left: -11px;
-			top: 11px;
-			border-radius: 50%;
+		&.dot::before{
+			left: -13px;
+			top: 12px;
 			width: 6px;
 			height: 6px;
-			background-color: #33CD5E;
+			@media screen and (max-width: 930px) {
+				left: -11px;
+				top: 11px;
+			}
 		}
 	}
 
@@ -277,7 +277,7 @@
 		line-height: 135%;
 		color: var(--text-grey);
 		@media screen and (max-width: 930px) {
-		font-size: 14px;
+			font-size: 14px;
 		}
 	}
 

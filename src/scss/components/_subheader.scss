@@ -64,18 +64,16 @@
 			margin-top: 15px;
 		}
 
-		&::after{
-			content: '';
-			position: absolute;
+		&.dot::before{
 			left: -20px;
 			top: 10px;
-			border-radius: 50%;
 			width: 7px;
 			height: 7px;
-			background-color: #33CD5E;
 		}
 	}
 }
+
+
 
 .timer {
 	display: flex;
