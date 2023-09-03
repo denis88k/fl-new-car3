@@ -7,18 +7,16 @@ const modalErrorDelete = modal => {
 	modal.querySelectorAll('.just-validate-error-label')?.forEach(errorElement => errorElement.remove());
 };
 
-const modal = (btnOpen, modal, btnClose) => {
-	btnOpen = document.querySelector(btnOpen);
+const modal = (btnOpen, modal, btnClose, isLink = false) => {
+	!isLink && (btnOpen = document.querySelector(btnOpen));
 	modal = document.querySelector(modal);
 	btnClose = document.querySelector(btnClose);
 	const body = document.body;
-
 	const removeActiveClassModal = () => {
 		removeClass(body, '_lock');
 		removeClass(modal, 'active');
 		modalErrorDelete(modal);
 	};
-
 	// открытие модального окна
 	btnOpen?.addEventListener('click', e => {
 		e.preventDefault();

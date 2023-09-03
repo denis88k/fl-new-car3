@@ -2,16 +2,18 @@ import './components/timer.js'; // таймер
 
 import modal from './components/modal.js';
 
-// promo-header
-modal('.promo__header-modal-payment', '.modal-payment', '.modal-payment .modal__close');
-modal('.promo__header-modal-tradIn', '.modal-tradIn', '.modal-tradIn .modal__close');
-
 // promo-actual
 modal('.promo__header-modal-discount', '.modal-discount', '.modal-discount .modal__close');
 modal('.promo__header-modal-tiresСasco', '.modal-tiresСasco', '.modal-tiresСasco .modal__close');
 modal('.promo__header-modal-bestPrice', '.modal-bestPrice', '.modal-bestPrice .modal__close');
-modal('.report__about-btn-red', '.modal-btnUnderCar', '.modal-btnUnderCar .modal__close');
-modal('.report__about-btn-white', '.modal-btnUnderCar', '.modal-btnUnderCar .modal__close');
+
+// choice-car-card
+// document.querySelectorAll('.choice-car__btn-buy').forEach(btnBuy => {
+// 	modal(btnBuy, '.modal-btnUnderCar', '.modal-btnUnderCar .modal__close', true);
+// });
+// document.querySelectorAll('.choice-car__btn-order').forEach(btnOrder => {
+// 	modal(btnOrder, '.modal-btnUnderCar', '.modal-btnUnderCar .modal__close', true);
+// });
 
 import validateForms from './components/validation.js';
 

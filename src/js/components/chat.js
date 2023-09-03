@@ -193,7 +193,7 @@ const chat3 = () => {
 
 		const blockChoiceClick = e => {
 			// console.log(animShowChat, 'choice');
-
+			// console.log(e.target, 'target');
 			if (
 				containsClass(e.target, 'choice-car__btn-buy') ||
 				containsClass(e.target, 'choice-car__tel') ||

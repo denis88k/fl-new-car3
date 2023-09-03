@@ -14,3 +14,6 @@ window.addEventListener('scroll', stickyConsultant);
 
 // =============FILTER==================
 filter();
+
+// choice-car
+import './components/modalChoiceCar.js';

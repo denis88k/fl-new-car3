@@ -2752,7 +2752,7 @@ input::-webkit-inner-spin-button {
   margin-bottom: 15px;
   border-radius: 51px;
   padding: 20px 115px;
-  font-weight: 550;
+  font-weight: 500;
   font-size: 19px;
   line-height: 135%;
   text-align: center;
@@ -2823,7 +2823,7 @@ input::-webkit-inner-spin-button {
 .choice-car__btn-order {
   border-radius: 62px;
   padding: 18px 30px;
-  font-weight: 550;
+  font-weight: 500;
   font-size: 18px;
   line-height: 135%;
   text-align: center;
