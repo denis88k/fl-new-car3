@@ -2799,7 +2799,7 @@ input::-webkit-inner-spin-button {
 }
 .choice-car__tel.dot::before {
   left: -13px;
-  top: 12px;
+  top: 10px;
   width: 6px;
   height: 6px;
 }
