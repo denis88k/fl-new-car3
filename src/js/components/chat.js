@@ -1,3 +1,4 @@
+import { filterReset } from './filter.js';
 import { addClass, closestElement, containsClass, removeClass, removeClassArray } from './helpers.js';
 // import { yearsDefaultState } from './years.js';
 
@@ -91,6 +92,11 @@ const resetActiveAllBlock = currentNumber => {
 		// сообщение ответа клиента
 		const msgClient = chats[i].querySelector('.chat__message-client');
 		removeClass(msgClient, 'msg-show');
+		console.log(i, 'i');
+		// очистка filter
+		if (i === 1) {
+			filterReset();
+		}
 
 		// если тема чата это предпоследний чат, то нужно скрыть:
 		//  два последних чата и actual-promo и footer
@@ -104,6 +110,7 @@ const resetActiveAllBlock = currentNumber => {
 const chat3 = () => {
 	// console.log(numberChat, 'numberChat');
 	animShowChat = true;
+
 	// получаем блок чата
 	// ====NOTE: chat=№
 	const chat = chats[numberChat];
@@ -112,39 +119,43 @@ const chat3 = () => {
 	const msgBlocks = chat.querySelectorAll('.chat__message-block');
 
 	// NOTE: показ сообщений консультанта и печатание
-	msgBlocks.forEach((msgBlock, index) => {
-		// анимация печатания
-		const msgPrint = msgBlock.querySelector('.chat__message-print');
+	numberChat &&
+		msgBlocks.forEach((msgBlock, index) => {
+			// анимация печатания
+			const msgPrint = msgBlock.querySelector('.chat__message-print');
 
-		setTimeout(() => {
-			// анимация 'Ольга печатает...', задержка появления в 500мс
 			setTimeout(() => {
-				addClass(msgPrint, 'msg-print-show');
-			}, 600);
-			// скрытие о печатании консультанта
-			// показ вопроса от консультанта
-			// с задержкой в 2,5с + 550мс
-			setTimeout(() => {
-				// удаление анимации печатания
-				removeClass(msgPrint, 'msg-print-show');
-				// console.log(msgConsult, msgConsult.offsetHeight);
-			}, 2500);
-		}, index * 2500 + 650);
-		// 2500 + 550:
-		//						--- 550(500) - с запасом взятое время появления анимации печати,
-		//						--- 2500 - время удаления + появления вопроса консультанта
-		// итого время показа одного блока сообщений консультанта "2500+550=3050мс"
-	});
+				// анимация 'Ольга печатает...', задержка появления в 500мс
+				setTimeout(() => {
+					addClass(msgPrint, 'msg-print-show');
+				}, 600);
+				// скрытие о печатании консультанта
+				// показ вопроса от консультанта
+				// с задержкой в 2,5с + 550мс
+				setTimeout(() => {
+					// удаление анимации печатания
+					removeClass(msgPrint, 'msg-print-show');
+					// console.log(msgConsult, msgConsult.offsetHeight);
+				}, 2500);
+			}, index * 2500 + 650);
+			// 2500 + 550:
+			//						--- 550(500) - с запасом взятое время появления анимации печати,
+			//						--- 2500 - время удаления + появления вопроса консультанта
+			// итого время показа одного блока сообщений консультанта "2500+550=3050мс"
+		});
 
 	// ====NOTE: если номер чата равен 2 (последний пункт),
 	// то нужно показать эти блоки и выйти
 	if (numberChat === 2) {
-		// console.log('last');
+		console.log('last');
 		showLastChat(chat);
 		setTimeout(() => {
 			animShowChat = false;
 		});
 		return;
+	}
+	if (numberChat === 0) {
+		animShowChat = false;
 	}
 
 	// NOTE: СООБЩЕНИЯ КЛИЕНТА
@@ -156,23 +167,24 @@ const chat3 = () => {
 	// ====текущий чат, эта переменная необходима, чтобы она замкнулась в прослушке функции следящая за блоком выборов и для блоков с multi
 	const currentNumber = Number(chat.dataset.chat);
 	// const currentNumber = numberChat;
-	setTimeout(() => {
-		// блок с выборами появляется, если он есть в секции чата
-		msgBlockChoice && addClass(msgBlockChoice, 'msg-show');
+	numberChat &&
 		setTimeout(() => {
-			// плавный скролл до начала нового блока чата с отступом
-			console.log('вниз до нового блока чата');
-			numberChat && scrollChat(chat);
-		});
-		// появление всех блоков завершено
-		setTimeout(() => {
+			// блок с выборами появляется, если он есть в секции чата
+			msgBlockChoice && addClass(msgBlockChoice, 'msg-show');
+			setTimeout(() => {
+				// плавный скролл до начала нового блока чата с отступом
+				console.log(chat, 'chat', numberChat, 'numberChat');
+				console.log('вниз до нового блока чата');
+				numberChat && scrollChat(chat);
+			});
+			// появление всех блоков завершено
 			animShowChat = false;
-		});
-	}, 2500 * msgBlocks.length + 950);
+			setTimeout(() => {});
+		}, 2500 * msgBlocks.length + 950);
 
 	// ======NOTE: "блок с выборами"
 	if (msgBlockChoice) {
-		// console.log('choice');
+		console.log('choice', animShowChat);
 
 		// блоки c вариантами выбора, за которыми нужно следить
 		// родитель блоков выбора
@@ -181,13 +193,20 @@ const chat3 = () => {
 		const blockChoiceAll = msgBlockChoice.querySelectorAll('.block-choice');
 
 		const blockChoiceClick = e => {
-			// console.log(animShowChat, 'choice');
+			console.log(animShowChat, 'choice');
 
 			// REMOVE
 			// не фиксировать нажатия на кнопки slider'а
 			// if (containsClass(e.target, 'choice-car__btn-next') || containsClass(e.target, 'choice-car__btn-prev')) {
 			// 	return;
 			// }
+			if (
+				containsClass(e.target, 'choice-car__btn-buy') ||
+				containsClass(e.target, 'choice-car__tel') ||
+				containsClass(e.target, 'choice-car__btn-order')
+			) {
+				return;
+			}
 
 			// блок на который нажали
 			const block = closestElement(e.target, 'block-choice');
@@ -210,7 +229,7 @@ const chat3 = () => {
 				chat3();
 			} else {
 				// NOTE: когда меняем ответ в чате
-				// но нас не пустит, пока process work не станет === false
+				// но нас не пустит, пока animShowChat не станет === false
 				// он меняется выше, после появление последнего блока
 				if (!animShowChat && block) {
 					// срабатывает когда нажимаешь на блок с выборами, на другой вариант
