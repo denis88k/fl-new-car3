@@ -1,4 +1,4 @@
-import { addClass, containsClass, removeClass, removeClassArray, toggleClass } from './helpers.js';
+import { addClass, containsClass, removeClass, removeClassArray, toggleClass } from '../helpers.js';
 
 // =========кнопка показать ещё=========
 const countBlockVisibl = 6; // сколько блоков отобразить

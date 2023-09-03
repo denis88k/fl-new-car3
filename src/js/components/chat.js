@@ -1,7 +1,4 @@
 import { addClass, closestElement, containsClass, removeClass, removeClassArray } from './helpers.js';
-// import { mileageDefaultState } from './mileage.js';
-// import { ownerDefaultState } from './owner.js';
-// import { resetReport } from './report.js'; // из-за него лагало
 // import { yearsDefaultState } from './years.js';
 
 // =========скроллы========
@@ -47,23 +44,21 @@ const scrollEndChat = () => {
 };
 
 // NOTE: последние чаты
-const chatBlock = chatMain.querySelectorAll('.chat__block');
+// const chatBlock = chatMain.querySelectorAll('.chat__block');
+const chatLastBlock = document.querySelector('.chat-last-block');
 const promoFooterInner = document.querySelector('.promo__footer-inner');
 const footer = document.querySelector('.footer');
 
 const showLastChat = chat => {
 	setTimeout(() => {
-		addClass(chatBlock[1], 'msg-show'); // 6
-		addClass(chatBlock[2], 'msg-show'); // 7
+		addClass(chatLastBlock, 'msg-show'); // 6
 		addClass(promoFooterInner, 'active');
 		addClass(footer, 'active');
-		resetReport();
 		scrollChat(chat);
 	}, 3800);
 };
 const hiddenLastChat = () => {
-	removeClass(chatBlock[1], 'msg-show'); // 6
-	removeClass(chatBlock[2], 'msg-show'); // 7
+	removeClass(chatLastBlock, 'msg-show'); // 6
 	removeClass(promoFooterInner, 'active');
 	removeClass(footer, 'active');
 };
@@ -71,7 +66,7 @@ const hiddenLastChat = () => {
 // NOTE: удаление активных классов с чатов, которые отображены,
 // дальше той секции блока, в котором произошёл клик
 const resetActiveAllBlock = currentNumber => {
-	for (let i = currentNumber + 1; i < chatLength - 2; i++) {
+	for (let i = currentNumber + 1; i < chatLength; i++) {
 		// ====NOTE: chat__message-block====
 		// ====получаем кол-во блоков сообщений: анимация печати + вопрос консультанта
 		const msgBlocks = chats[i].querySelectorAll('.chat__message-block');
@@ -80,10 +75,8 @@ const resetActiveAllBlock = currentNumber => {
 			// анимация печатания
 			const msgPrint = msgBlock.querySelector('.chat__message-print'); // анимация печатания
 			// сообщение с вопросом консультанта
-			const msgChatConsultant = msgBlock.querySelector('.chat__message-consultant');
 			// удаление активных классов
 			removeClass(msgPrint, 'msg-print-show');
-			removeClass(msgChatConsultant, 'msg-show');
 		});
 		// NOTE: блок CHOICE
 		const msgBlocksChoice = chats[i].querySelector('.chat__message-block-choice');
@@ -101,39 +94,32 @@ const resetActiveAllBlock = currentNumber => {
 
 		// если тема чата это предпоследний чат, то нужно скрыть:
 		//  два последних чата и actual-promo и footer
-		if (i === chatLength - 3) {
+		if (i === 2) {
 			hiddenLastChat();
 		}
 	}
 };
 
 // =====ЛОГИКА ЧАТА2=====
-const chat2 = () => {
+const chat3 = () => {
 	// console.log(numberChat, 'numberChat');
 	animShowChat = true;
 	// получаем блок чата
 	// ====NOTE: chat=№
-	// const chat = document.querySelector(`.chat-messages[data-chat="${numberChat}"]`);
 	const chat = chats[numberChat];
 	// ====NOTE: chat__message-block====
 	// ====получаем кол-во блоков сообщений: анимация печати + вопрос консультанта
 	const msgBlocks = chat.querySelectorAll('.chat__message-block');
-	// блок multi
-	const msgBlockMulti = chat.querySelector('.chat__choice-multi');
-	// показ сообщений консультанта
+
+	// NOTE: показ сообщений консультанта и печатание
 	msgBlocks.forEach((msgBlock, index) => {
 		// анимация печатания
 		const msgPrint = msgBlock.querySelector('.chat__message-print');
-		// сообщение с вопросом консультанта
-		const msgConsult = msgBlock.querySelector('.chat__message-consultant');
 
 		setTimeout(() => {
 			// анимация 'Ольга печатает...', задержка появления в 500мс
 			setTimeout(() => {
-				// !msgPrint.classList.contains('msg-print-show') && msgPrint.classList.add('msg-print-show');
 				addClass(msgPrint, 'msg-print-show');
-				// если это не первая секция чата, то плавный скролл на высоту сообщения от консультанта
-				numberChat && scrollMsg(msgPrint);
 			}, 600);
 			// скрытие о печатании консультанта
 			// показ вопроса от консультанта
@@ -141,10 +127,6 @@ const chat2 = () => {
 			setTimeout(() => {
 				// удаление анимации печатания
 				removeClass(msgPrint, 'msg-print-show');
-				// показ сообщение вопроса консультанта
-				addClass(msgConsult, 'msg-show');
-				// если это не первая секция чата, то плавный скролл на высоту сообщения от консультанта
-				numberChat && msgConsult && scrollMsg(msgConsult);
 				// console.log(msgConsult, msgConsult.offsetHeight);
 			}, 2500);
 		}, index * 2500 + 650);
@@ -153,27 +135,10 @@ const chat2 = () => {
 		//						--- 2500 - время удаления + появления вопроса консультанта
 		// итого время показа одного блока сообщений консультанта "2500+550=3050мс"
 	});
-	// NOTE: ===========DefaultState ==============
-	setTimeout(() => {
-		if (msgBlockMulti) {
-			if (msgBlockMulti.querySelector('.years__block')) {
-				// console.log('years__block init');
-				yearsDefaultState();
-			}
-			if (msgBlockMulti.querySelector('.mileage__block')) {
-				// console.log('mileage__block init');
-				mileageDefaultState();
-			}
-			if (msgBlockMulti.querySelector('.owner__block')) {
-				// console.log('owner__block init');
-				ownerDefaultState();
-			}
-		}
-	}, msgBlocks.length * 2500 + 700);
 
-	// ====NOTE: если номер чата равен 6 (отчёт авто/report),
+	// ====NOTE: если номер чата равен 2 (последний пункт),
 	// то нужно показать эти блоки и выйти
-	if (numberChat === chatLength - 3) {
+	if (numberChat === 2) {
 		// console.log('last');
 		showLastChat(chat);
 		setTimeout(() => {
@@ -182,7 +147,7 @@ const chat2 = () => {
 		return;
 	}
 
-	// NOTE: сообщения клиента
+	// NOTE: СООБЩЕНИЯ КЛИЕНТА
 	// сообщение ответ клиента
 	const msgAnswer = chat.querySelector('.chat__message-client');
 	// блок choice
@@ -196,6 +161,7 @@ const chat2 = () => {
 		msgBlockChoice && addClass(msgBlockChoice, 'msg-show');
 		setTimeout(() => {
 			// плавный скролл до начала нового блока чата с отступом
+			console.log('вниз до нового блока чата');
 			numberChat && scrollChat(chat);
 		});
 		// появление всех блоков завершено
@@ -206,7 +172,6 @@ const chat2 = () => {
 
 	// ======NOTE: "блок с выборами"
 	if (msgBlockChoice) {
-		// ====NOTE: блок с выборами (choice)
 		// console.log('choice');
 
 		// блоки c вариантами выбора, за которыми нужно следить
@@ -217,10 +182,13 @@ const chat2 = () => {
 
 		const blockChoiceClick = e => {
 			// console.log(animShowChat, 'choice');
+
+			// REMOVE
 			// не фиксировать нажатия на кнопки slider'а
-			if (containsClass(e.target, 'choice-car__btn-next') || containsClass(e.target, 'choice-car__btn-prev')) {
-				return;
-			}
+			// if (containsClass(e.target, 'choice-car__btn-next') || containsClass(e.target, 'choice-car__btn-prev')) {
+			// 	return;
+			// }
+
 			// блок на который нажали
 			const block = closestElement(e.target, 'block-choice');
 			// если текущий чат совпадает с глобальным номером чата,
@@ -235,10 +203,11 @@ const chat2 = () => {
 				// показываем сообщение ответ клиента
 				addClass(msgAnswer, 'msg-show');
 				// прокрутка вниз, до сообщения с ответом клиента, т.е. внизу окажется сообщение ответ клиента
+				console.log('вниз до сообщения ответа клиента');
 				scrollEndChat();
 				// увеличиваем счётчик чата, чтобы запустить следующий чат
 				numberChat++;
-				chat2();
+				chat3();
 			} else {
 				// NOTE: когда меняем ответ в чате
 				// но нас не пустит, пока process work не станет === false
@@ -270,7 +239,7 @@ const chat2 = () => {
 						// запускаем секцию чата, в которой произошёл клик, заново
 						numberChat = currentNumber + 1;
 						// console.log(numberChat, 'новый счёт choice');
-						chat2();
+						chat3();
 					}, 200);
 				} else return;
 			}
@@ -278,53 +247,6 @@ const chat2 = () => {
 
 		blocksChoice.addEventListener('click', blockChoiceClick);
 	}
-	if (msgBlockMulti) {
-		// console.log('multi');
-
-		const btnContinue = chat.querySelector('.btn-continue');
-		const btnContinueClick = () => {
-			// console.log(animShowChat, 'MULTI');
-			if (currentNumber === numberChat) {
-				// ответ берём из data кнопки на которую нажали
-				msgAnswer.innerText = btnContinue.dataset.multi;
-				// сообщение ответ клиента
-				addClass(msgAnswer, 'msg-show');
-				// прокрутка вниз, до сообщения с ответом клиента
-				scrollEndChat();
-
-				// увеличиваем счётчик чата, чтобы запустить следующий чат
-				numberChat++;
-				chat2();
-			} else {
-				if (!animShowChat) {
-					// console.log('заново multi');
-
-					// ====скрываем сообщение ответ клиента:
-					removeClass(msgAnswer, 'msg-show');
-					msgAnswer.innerText = btnContinue.dataset.multi;
-
-					// ====NOTE: пройдёмся по всем секциям чата, которые отображены, дальше той секции блока, в котором произошёл клик
-					resetActiveAllBlock(currentNumber);
-
-					setTimeout(() => {
-						// появляется сообщение клиента
-						addClass(msgAnswer, 'msg-show');
-						// скролл до конца сообщения клиента
-						// прокрутка вниз, до сообщения с ответом клиента
-						// chatInner.scrollIntoView(scrollIntoViewOptions);
-
-						scrollEndChat();
-						numberChat = currentNumber + 1;
-						// console.log(numberChat, 'новый счёт multi');
-						// NOTE:
-						// запускаем секцию чата, в которой произошёл клик, заново
-						chat2();
-					}, 200);
-				}
-			}
-		};
-		btnContinue.addEventListener('click', btnContinueClick);
-	}
 };
 
-export { chat2 };
+export { chat3 };

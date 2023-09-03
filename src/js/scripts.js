@@ -1,4 +1,4 @@
-import { chat2 } from './components/chat.js';
+import { chat3 } from './components/chat.js';
 import { filter } from './components/filter.js';
 // import { mileageInit } from './components/mileage.js';
 // import { ownerInit } from './components/owner.js';
@@ -8,7 +8,7 @@ import stickyConsultant from './components/stickyConsultant.js';
 // import { yearsInit } from './components/years.js';
 
 // NOTE:===========CHAT start===========
-// chat2();
+chat3();
 // ========= sticky consultant при скролле страницы=========
 window.addEventListener('scroll', stickyConsultant);
 

@@ -24,6 +24,21 @@
 	}
 }
 
+.chat-last-block{
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+
+	&.msg-show{
+		position: static;
+		opacity: 1;
+		visibility: visible;
+		animation-duration: 0.7s;
+		animation-timing-function: ease;
+		animation-fill-mode: forwards;
+	}
+}
+
 .maps {
 	overflow: hidden;
 	margin-top: 25px;

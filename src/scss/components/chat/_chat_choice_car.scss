@@ -1,7 +1,4 @@
 @import './years_mileage'; // wrapper
-.choice-container{
-
-}
 
 .choice-car {
 	display: flex;
@@ -189,7 +186,6 @@
 				background-color: #F7F7F7;
 			}
 		}
-
 	}
 
 	&__mileage-owner {
@@ -209,9 +205,6 @@
 	&__mileage {
 		margin-right: 25px;
 	}
-
-	// &__owner {
-	// }
 
 	&__charact {
 		font-weight: 400;
@@ -317,6 +310,8 @@
 	}
 
 	&__btn {
+		max-width: 700px;
+		width: 100%;
 		@include adaptiv-value(margin-top, 20, 15, 1);
 	}
 }

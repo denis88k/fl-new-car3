@@ -2813,6 +2813,8 @@ input::-webkit-inner-spin-button {
   color: var(--text-black);
 }
 .choice-car__btn {
+  max-width: 700px;
+  width: 100%;
   margin-top: 20px;
 }
 @media (max-width: 1420px) {
@@ -2844,6 +2846,20 @@ input::-webkit-inner-spin-button {
   .chat__form-block:nth-child(1) {
     max-width: 375px;
   }
+}
+
+.chat-last-block {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+.chat-last-block.msg-show {
+  position: static;
+  opacity: 1;
+  visibility: visible;
+  animation-duration: 0.7s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
 }
 
 .maps {
