@@ -56,6 +56,7 @@ const showLastChat = chat => {
 		addClass(promoFooterInner, 'active');
 		addClass(footer, 'active');
 		scrollChat(chat);
+		animShowChat = false;
 	}, 3800);
 };
 const hiddenLastChat = () => {
@@ -149,9 +150,10 @@ const chat3 = () => {
 	if (numberChat === 2) {
 		console.log('last');
 		showLastChat(chat);
-		setTimeout(() => {
-			animShowChat = false;
-		});
+		// setTimeout(() => {
+		// 	console.log('first');
+		// 	animShowChat = false;
+		// }, 2500 * msgBlocks.length + 950);
 		return;
 	}
 	if (numberChat === 0) {
@@ -173,13 +175,14 @@ const chat3 = () => {
 			msgBlockChoice && addClass(msgBlockChoice, 'msg-show');
 			setTimeout(() => {
 				// плавный скролл до начала нового блока чата с отступом
-				console.log(chat, 'chat', numberChat, 'numberChat');
-				console.log('вниз до нового блока чата');
+				// console.log(chat, 'chat', numberChat, 'numberChat');
+				// console.log('вниз до нового блока чата');
 				numberChat && scrollChat(chat);
 			});
 			// появление всех блоков завершено
-			animShowChat = false;
-			setTimeout(() => {});
+			setTimeout(() => {
+				animShowChat = false;
+			});
 		}, 2500 * msgBlocks.length + 950);
 
 	// ======NOTE: "блок с выборами"
@@ -195,11 +198,6 @@ const chat3 = () => {
 		const blockChoiceClick = e => {
 			console.log(animShowChat, 'choice');
 
-			// REMOVE
-			// не фиксировать нажатия на кнопки slider'а
-			// if (containsClass(e.target, 'choice-car__btn-next') || containsClass(e.target, 'choice-car__btn-prev')) {
-			// 	return;
-			// }
 			if (
 				containsClass(e.target, 'choice-car__btn-buy') ||
 				containsClass(e.target, 'choice-car__tel') ||
