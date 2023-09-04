@@ -14,11 +14,6 @@
 			justify-items: center;
 			grid-template-columns: repeat(4, 1fr);
 		}
-
-		// @include adaptiv-value-in-min(padding-left, 99, 15, 940, 375);
-		// @include adaptiv-value-in-min(padding-right, 99, 15, 940, 375);
-		// @include adaptiv-value(padding-top, 10, 15, 1);
-		// @include adaptiv-value(padding-bottom, 10, 15, 1);
 	}
 
 	&__block {
@@ -29,7 +24,7 @@
 			grid-column: 4 span;
 			width: 100%;
 		}
-		
+
 		border-radius: 10px;
 		background-color: rgba(0, 0, 0, 0.03);
 		transition: all 0.3s ease;
@@ -44,7 +39,7 @@
 		position: relative;
 	}
 
-	&__img-watermark{
+	&__img-watermark {
 		position: absolute;
 		right: 31px;
 		top: 25px;
@@ -57,14 +52,14 @@
 			top: 18px;
 		}
 
-		.watermark-text{
+		.watermark-text {
 			font-weight: 700;
 			font-size: 16px;
 			line-height: 135%;
 			color: var(--text-black);
 		}
 
-		.watermark-icon{
+		.watermark-icon {
 			@media screen and (max-width: 800px) {
 				width: 18.521px;
 				height: 18.111px;
@@ -76,9 +71,6 @@
 		position: relative;
 		display: block;
 		overflow: hidden;
-
-		// width: 100%;
-		// height: 100%;
 		width: 100%;
 		height: 326px;
 	}
@@ -108,8 +100,6 @@
 		justify-content: center;
 		width: 100%;
 		height: 100%;
-
-		// background-color: var(--red-light);
 		opacity: 0;
 		transform: translateX(-50%);
 		pointer-events: none;
@@ -130,6 +120,65 @@
 	&__slide:hover .choice-car__slide-img {
 		z-index: -1;
 		opacity: 1;
+	}
+
+	// для слайдера
+	@media screen and (max-width: 800px) {
+		&__swiper {
+			position: relative;
+			display: block;
+			overflow: hidden;
+			width: 100%;
+			height: 256px;
+		}
+
+		&__wrapper {
+			position: static;
+			left: auto;
+			top: auto;
+			z-index: 20;
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		&__slide {
+			flex-grow: 0;
+			cursor: pointer;
+		}
+
+		&__slide-img {
+			position: static;
+			left: auto;
+			top: auto;
+			z-index: auto;
+			display: block;
+
+			// width: 100%;
+			// height: 100%;
+			opacity: 1;
+			transform: none;
+			pointer-events: auto;
+		}
+
+		&__slide-img img {
+			border-radius: 10px;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		&__slide:first-child .choice-car__slide-img {
+			z-index: auto;
+
+			// opacity: 1;
+		}
+
+		&__slide:hover .choice-car__slide-img {
+			z-index: auto;
+
+			// opacity: 1;
+		}
 	}
 
 	// инфо
@@ -164,7 +213,7 @@
 		font-weight: 700;
 		font-size: 24px;
 		line-height: 130%;
-		color: #E63535; 
+		color: #e63535;
 	}
 
 	// &__discount {
@@ -188,12 +237,12 @@
 		color: #727171;
 		gap: 12px;
 
-		.condition{
+		.condition {
 			border-radius: 25px;
 			padding: 3px 7px;
 			background: var(--white);
 			@media screen and (max-width: 490px) {
-				background-color: #F7F7F7;
+				background-color: #f7f7f7;
 			}
 		}
 	}
@@ -270,7 +319,7 @@
 			font-size: 18px;
 		}
 
-		&.dot::before{
+		&.dot::before {
 			left: -13px;
 			top: 10px;
 			width: 6px;
@@ -300,7 +349,7 @@
 		line-height: 135%;
 		text-align: center;
 		text-decoration-line: underline;
-		color: rgba(40, 38, 38, 0.70);
+		color: rgba(40, 38, 38, 0.7);
 		background-color: var(--white);
 		cursor: pointer;
 		@media screen and (max-width: 930px) {
@@ -310,10 +359,9 @@
 		}
 
 		@media screen and (max-width: 500px) {
-			background-color: #F7F7F7;
+			background-color: #f7f7f7;
 		}
 	}
-	
 
 	&__block:hover,
 	&__block.active {
@@ -344,3 +392,33 @@
 	}
 }
 
+.f-carousel__nav .f-button {
+	&.is-next,
+	&.is-prev {
+		--f-button-next-pos: 5px;
+		border-radius: 50%;
+		width: 30px;
+		height: 30px;
+		box-shadow: none;
+		background-color: var(--white);
+
+		&::after {
+			content: '';
+			position: absolute;
+			width: 16px;
+			height: 16px;
+		}
+
+		svg {
+			display: none;
+		}
+	}
+
+	&.is-next::after {
+		background: url('./../img/slide_arrow_next.svg') no-repeat center/contain;
+	}
+
+	&.is-prev::after {
+		background: url('./../img/slide_arrow_prev.svg') no-repeat center/contain;
+	}
+}
