@@ -396,9 +396,10 @@
 }
 
 .f-carousel__nav .f-button {
+	--f-button-next-pos: 5px;
+	--f-button-prev-pos: 5px;
 	&.is-next,
 	&.is-prev {
-		--f-button-next-pos: 5px;
 		border-radius: 50%;
 		width: 30px;
 		height: 30px;
