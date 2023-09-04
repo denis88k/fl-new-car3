@@ -1,5 +1,5 @@
 .subheader {
-	&__inner{
+	&__inner {
 		@include adaptiv-value(margin-top, 40, 30, 1);
 		display: flex;
 		flex-direction: column;
@@ -33,7 +33,6 @@
 	}
 }
 
-
 .timer-promo {
 	&__inner {
 		display: flex;
@@ -64,7 +63,7 @@
 			margin-top: 15px;
 		}
 
-		&.dot::before{
+		&.dot::before {
 			left: -20px;
 			top: 10px;
 			width: 7px;
@@ -72,8 +71,6 @@
 		}
 	}
 }
-
-
 
 .timer {
 	display: flex;
@@ -88,19 +85,20 @@
 		min-height: 71px;
 	}
 
-	&-count{
+	&-count {
 		@include adaptiv-value(font-size, 42, 35, 1);
 		margin-top: 4px;
 		font-weight: 550;
 		line-height: 46px;
 		color: var(--primary-color);
 		@media screen and (max-width: 490px) {
+			margin-top: 6px;
 			line-height: 38.5px;
 		}
 	}
 
-	&-text{
-		@include adaptiv-value(font-size, 16, 15, 1); 
+	&-text {
+		@include adaptiv-value(font-size, 16, 15, 1);
 		margin-top: -1px;
 		font-weight: 400;
 		line-height: 110%;
@@ -113,13 +111,13 @@
 		flex-direction: column;
 		align-items: center;
 
-		&:nth-child(1){
+		&:nth-child(1) {
 			margin-right: -7px;
 		}
 
-		&:nth-child(2){
-			border-right: 1px solid #D9D9D9;
-			border-left: 1px solid #D9D9D9;
+		&:nth-child(2) {
+			border-right: 1px solid #d9d9d9;
+			border-left: 1px solid #d9d9d9;
 		}
 	}
 }
