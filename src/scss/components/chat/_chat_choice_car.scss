@@ -395,6 +395,13 @@
 	}
 }
 
+.f-carousel__slide {
+	position: static;
+	@media screen and (max-width: 800px) {
+		position: relative;
+	}
+}
+
 .f-carousel__nav .f-button {
 	--f-button-next-pos: 5px;
 	--f-button-prev-pos: 5px;

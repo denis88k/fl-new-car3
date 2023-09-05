@@ -1,6 +1,6 @@
 import { filterReset } from './filter.js';
 import { addClass, closestElement, containsClass, removeClass, removeClassArray } from './helpers.js';
-import { sliderReset } from './slider.js';
+import { sliderStart } from './slider.js';
 // import { yearsDefaultState } from './years.js';
 
 // =========скроллы========
@@ -147,8 +147,10 @@ const chat3 = () => {
 			//						--- 2500 - время удаления + появления вопроса консультанта
 			// итого время показа одного блока сообщений консультанта "2500+550=3050мс"
 		});
+
+	// для prod
 	if (numberChat === 1) {
-		sliderReset();
+		sliderStart();
 	}
 	// ====NOTE: если номер чата равен 2 (последний пункт),
 	// то нужно показать эти блоки и выйти
