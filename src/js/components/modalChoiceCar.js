@@ -13,7 +13,15 @@ choiceCarBlocks.addEventListener('click', e => {
 	// console.log(e.target, 'target');
 	const btnOpen = e.target;
 	if (containsClass(btnOpen, 'choice-car__btn-buy') || containsClass(btnOpen, 'choice-car__btn-order')) {
-		const modal = document.querySelector('.modal-btnUnderCar');
+		let modal;
+		// кнопка купить
+		if (containsClass(btnOpen, 'choice-car__btn-buy')) {
+			modal = document.querySelector('.modal-btnUnderCar');
+		}
+		// кнопка забронировать
+		if (containsClass(btnOpen, 'choice-car__btn-order')) {
+			modal = document.querySelector('.modal-btnUnderCar-2');
+		}
 		const btnClose = document.querySelector('.modal-btnUnderCar .modal__close');
 		const body = document.body;
 
