@@ -1,0 +1,306 @@
+/* stylelint-disable no-descending-specificity */
+.choice-model {
+	display: flex;
+	flex-direction: column;
+
+	&__title {
+		margin-top: 23px;
+		margin-bottom: 25px;
+		font-weight: 700;
+		font-size: 26px;
+		line-height: 125%;
+		color: #282626;
+
+		@media screen and (max-width: 800px) {
+			margin-bottom: 20px;
+			font-size: 24px;
+		}
+	}
+
+	&__input-block {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__input {
+		position: relative;
+		z-index: 1;
+
+		&-icon-search,
+		&-icon-del{
+			position: absolute;
+		}
+
+		&-icon-search{
+			left: 28px;
+			top: 19px;
+
+			@media screen and (max-width: 800px) {
+				top: 23px;
+				height: 17px;
+			}
+		}
+
+		&-icon-del{
+			right: 28px;
+			top: 24px;
+			cursor: pointer;
+
+			@media screen and (max-width: 800px) {
+				top: 23px;
+			}
+		}
+
+		input{
+			border: 1px solid #dcdcdc;
+			border-radius: 15px;
+			padding: 19px 15px 17px 64px;
+			width: 100%;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 150%;
+			letter-spacing: -0.01em;
+			color: #282626;
+			background-color: #f0f1f3;
+			transition: all 0.3s ease;
+
+			@media screen and (max-width: 800px) {
+				padding-left: 57px;
+				font-size: 15px;
+			}
+
+			&::placeholder{
+				color: #6e6f70;
+			}
+
+			&:focus{
+				border: 1px solid #e63535;
+				background-color: white;
+			}
+		}
+
+	}
+
+	&__input-search-list {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		border-radius: 15px;
+		padding-top: 62px;
+		width: 100%;
+		box-shadow: 0 4px 19px 0 rgba(0, 0, 0, 0.15);
+		background-color: white;
+		visibility: hidden;
+		transition: all 0.3s ease-in-out;
+
+		@media screen and (max-width: 800px) {
+			padding-top: 60.5px;
+			
+		}
+
+		&.visible{
+			visibility: visible;
+		}
+	}
+	
+	&__input-search-item{
+		display: none;
+		padding: 25px;
+
+		.choice-model__img{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.choice-model__name{
+			font-size: 20px;
+			line-height: 100%;
+		}
+
+		.choice-model__count{
+			margin-top: 3px;
+			font-size: 16px;
+			line-height: 100%;
+			color: #a5a5a5;
+		}
+
+		&:hover{
+			.choice-model__name{
+				color: #e63535;
+			}
+		}
+
+		&.visible{
+			position: relative;
+			z-index: 10;
+			display: flex;
+			align-items: center;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+			cursor: pointer;
+		}
+	}
+
+	&__input-search-item:not(:first-child){
+		border-top: 1px solid rgba(0, 0, 0, 0.05);
+	}
+
+	// &__blocks {
+	// }
+
+	// верхний список моделей
+	&__blocks-logos {
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		gap: 10px;
+
+		@media screen and (max-width: 800px) {
+			margin-top: 20px;
+			margin-bottom: 25px;
+		}
+	}
+
+	&__block-logo {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid #f8f8f8;
+		border-radius: 10px;
+		width: 78px;
+		height: 78px;
+		background-color: #f8f8f8;
+		transition: background-color 0.3s ease;
+		cursor: pointer;
+
+		&:hover{
+			background-color: #eeeeee;
+		}
+
+		&.active{
+			border: 1px solid #e63535;
+		}
+	}
+
+	&__btn-more {
+		display: none;
+		visibility: hidden;
+
+		@media screen and (max-width: 700px) {
+			display: flex;
+			align-items: center;
+			font-weight: 550;
+			font-size: 16px;
+			line-height: 150%;
+			letter-spacing: -0.01em;
+			color: #f53737;
+			visibility: visible;
+
+			img{
+				margin-left: 5px;
+				transition: transform 0.3s ease-out;
+			}
+
+			&-show{
+				display: block;
+			}
+
+			&-hide{
+				display: none;
+			}
+
+			&.btn-more-visible{
+				.choice-model__btn-more-show{
+					display: none;
+				}
+
+				.choice-model__btn-more-hide{
+					display: block;
+				}
+				
+				img{
+					transform: rotate(-180deg);
+				}
+			} 
+		}
+	}
+
+	&__blocks-model-list {
+		columns: 161px 4;
+		column-gap: 10px;
+		margin-bottom: 40px;
+
+		@media screen and (max-width: 700px) {
+			column-count: 1;
+			margin-top: 40px;
+			margin-bottom: 25px;
+		}
+	}
+
+	// нижний список моделей без лого
+	&__block {
+		display: flex;
+		width: max-content;
+		cursor: pointer;
+    
+		&:hover,&.active{
+			.choice-model__name{
+				color: #e63535;
+			}
+		}
+
+		@media screen and (max-width: 700px) {
+			display: flex;
+			align-items: center;
+			width: 100%;
+
+			&:not(:last-child){
+				border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+				padding-bottom: 20px;
+			}
+
+			&:not(:first-child){
+				border-top: 1px solid rgba(0, 0, 0, 0.05);
+				padding-top: 20px;
+			}
+		}
+	}
+
+	&__img {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		margin-right: 25px;
+		width: 30px;
+		height: 20px;
+
+		@media screen and (max-width: 700px) {
+			display: flex;
+		}
+	}
+
+	&__name{
+		margin-right: 5px;
+		color: #282626;
+		transition: color 0.3s ease;
+	}
+
+	&__count {
+		color: #7f7f7f;
+	}
+
+	&__name,
+	&__count {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 200%;
+		letter-spacing: -0.01em;
+
+		@media screen and (max-width: 700px) {
+			font-size: 20px;
+			line-height: 100%;
+		}
+	}
+}

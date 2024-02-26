@@ -434,3 +434,82 @@
 		background: url('./../img/slide_arrow_prev.svg') no-repeat center/contain;
 	}
 }
+
+@media screen and (max-width: 800px) {
+	.chat-messages[data-chat='1']{
+		.chat__message-block-choice{
+			position: relative;
+
+			&::after{
+				content: '';
+				position: absolute;
+				left: -100px;
+				top: 0;
+				z-index: 0;
+				width: 200vw;
+				height: 101.5%;
+				background-color: #F2F1F6;
+			}
+
+			.car-card__blocks{
+				position: relative;
+				z-index: 1;
+				grid-template-columns: repeat(8,1fr);
+			}
+
+			.car-card__block{
+				display: flex;
+				flex-direction: column;
+				border-radius: 20px;
+				background-color: white;
+			}
+		}
+
+		.car-card__img{
+			order: 1;
+			border-radius: 20px;
+	
+			img{
+				height: 105px;
+			}
+		}
+	
+		.car-card__title-amount{
+			margin-bottom: 3px;
+			margin-left: 10px;
+		}
+	
+		.car-card__title{
+			font-weight: 700;
+			font-size: 16px;
+			line-height: 20px;
+		}
+	
+		.car-card__amount{
+			display: none;
+		}
+
+		.car-card__price-discount{
+			align-items: center;
+			margin-bottom: 5px;
+			margin-left: 10px;
+		}
+
+		.car-card__price{
+			font-weight: 700;
+			font-size: 14px;
+			line-height: 17.6px;
+			color: #E63535;
+		}
+
+		.car-card__discount{
+			margin-left: 2px;
+			font-size: 13px;
+			line-height: 18px;
+			color: #7F7F7F;
+			background-color: transparent;
+		}
+	} 
+
+	
+}

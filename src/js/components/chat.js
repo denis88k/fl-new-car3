@@ -1,6 +1,6 @@
 import { filterReset } from './filter.js';
 import { addClass, closestElement, containsClass, removeClass, removeClassArray } from './helpers.js';
-import { sliderStart } from './slider.js';
+// import { sliderStart } from './slider.js';
 // import { yearsDefaultState } from './years.js';
 
 // =========скроллы========
@@ -97,13 +97,13 @@ const resetActiveAllBlock = currentNumber => {
 		// console.log(i, 'i');
 
 		// очистка filter
-		if (i === 1) {
+		if (i === 2) {
 			filterReset();
 		}
 
 		// если тема чата это предпоследний чат, то нужно скрыть:
 		//  два последних чата и actual-promo и footer
-		if (i === 2) {
+		if (i === 3) {
 			hiddenLastChat();
 		}
 	}
@@ -149,12 +149,12 @@ const chat3 = () => {
 		});
 
 	// для prod
-	if (numberChat === 1) {
-		sliderStart();
-	}
+	// if (numberChat === 1) {
+	// 	console.log('first');
+	// }
 	// ====NOTE: если номер чата равен 2 (последний пункт),
 	// то нужно показать эти блоки и выйти
-	if (numberChat === 2) {
+	if (numberChat === 3) {
 		showLastChat(chat);
 		return;
 	}
@@ -198,17 +198,18 @@ const chat3 = () => {
 
 		const blockChoiceClick = e => {
 			// console.log(animShowChat, 'choice');
-			// console.log(e.target, 'target');
+			const targetEvent = e.target;
+			// console.log('targetEvent', targetEvent);
 			if (
-				containsClass(e.target, 'choice-car__btn-buy') ||
-				containsClass(e.target, 'choice-car__tel') ||
-				containsClass(e.target, 'choice-car__btn-order')
+				containsClass(targetEvent, 'choice-car__btn-buy') ||
+				containsClass(targetEvent, 'choice-car__tel') ||
+				containsClass(targetEvent, 'choice-car__btn-order')
 			) {
 				return;
 			}
 
-			// блок на который нажали
-			const block = closestElement(e.target, 'block-choice');
+			// блок на который нажали проверка на то есть ли у него родитель с таким классом
+			const block = closestElement(targetEvent, 'block-choice');
 			// если текущий чат совпадает с глобальным номером чата,
 			// то есть нажали на выбор в последнем доступном чате, то:
 			if (currentNumber === numberChat && block) {
@@ -216,15 +217,19 @@ const chat3 = () => {
 				removeClassArray(blockChoiceAll, 'active');
 				// доб. класс active на нажатый выбор
 				addClass(block, 'active');
-				// ответ берём из data блока на который нажали
-				msgAnswer.innerText = block.dataset.choice;
-				// показываем сообщение ответ клиента
-				addClass(msgAnswer, 'msg-show');
+				if (msgAnswer) {
+					// ответ берём из data блока на который нажали
+					msgAnswer.innerText = block.dataset.choice;
+					// показываем сообщение ответ клиента
+					addClass(msgAnswer, 'msg-show');
+				}
 				// прокрутка вниз, до сообщения с ответом клиента, т.е. внизу окажется сообщение ответ клиента
 				// console.log('вниз до сообщения ответа клиента');
 				scrollEndChat();
 				// увеличиваем счётчик чата, чтобы запустить следующий чат
 				numberChat++;
+				console.log(numberChat, 'numberChat');
+
 				chat3();
 			} else {
 				// NOTE: когда меняем ответ в чате
@@ -234,10 +239,11 @@ const chat3 = () => {
 					// срабатывает когда нажимаешь на блок с выборами, на другой вариант
 					// и тогда удаляются все активные классы в других темах чата
 					// console.log('заново choice');
-					// ====скрываем сообщение ответ клиента:
-					removeClass(msgAnswer, 'msg-show');
-					msgAnswer.innerText = block.dataset.choice;
-
+					if (msgAnswer) {
+						// ====скрываем сообщение ответ клиента:
+						removeClass(msgAnswer, 'msg-show');
+						msgAnswer.innerText = block.dataset.choice;
+					}
 					// удаляем активные классы с данного choice
 					removeClassArray(blockChoiceAll, 'active');
 					// доб. активный класс на тот блок, который нажали
@@ -248,7 +254,9 @@ const chat3 = () => {
 
 					setTimeout(() => {
 						// появляется сообщение клиента
-						addClass(msgAnswer, 'msg-show');
+						if (msgAnswer) {
+							addClass(msgAnswer, 'msg-show');
+						}
 						// скролл до конца сообщения клиента
 						// прокрутка вниз, до сообщения с ответом клиента
 						// console.log(currentNumber, 'last');
@@ -256,7 +264,7 @@ const chat3 = () => {
 						// NOTE:
 						// запускаем секцию чата, в которой произошёл клик, заново
 						numberChat = currentNumber + 1;
-						// console.log(numberChat, 'новый счёт choice');
+						console.log(numberChat, 'новый счёт choice');
 						chat3();
 					}, 200);
 				} else return;

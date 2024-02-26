@@ -61,3 +61,94 @@
   yandexiniti();
 </script>
 <script src="js/main.min.js"></script>
+<!-- для слайдера -->
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.umd.js"></script>
+<script>
+  const options = {
+    Dots: false,
+    infinite: true,
+    transition: 'slide',
+  };
+
+  const sliderStart = () => {
+    if (window.innerWidth <= 800) {
+      const sliderCarousel = document.querySelectorAll('.choice-car__wrapper');
+      sliderCarousel.forEach(slider => {
+        new Carousel(slider, options);
+      });
+    }
+  };
+  sliderStart() // вызвать когда загрузил фото машин
+</script>
+
+<!-- для поиска -->
+<script>
+  const inputSearchList = document.querySelector('.choice-model__input-search-list')
+  const inputSearch = document.querySelector('.input-search')
+
+  const modelInputSearch = document.querySelectorAll('.choice-model__input-search-item');
+
+  const resetInput = () => {
+    inputSearchList.classList.remove('visible')
+    modelInputSearch.forEach(model => {
+      model.classList.remove('visible')
+    })
+  }
+
+  window.addEventListener('click', (e) => {
+    if (inputSearchList.classList.contains('visible') && !e.target.closest('.choice-model__input')) {
+      resetInput()
+    }
+  })
+
+  inputSearch.addEventListener('input', (e) => {
+    const inputTarget = e.target.value.replace(/\s+/g, '').toLowerCase()
+
+    if (inputTarget !== '') {
+      inputSearchList.classList.add('visible')
+      modelInputSearch.forEach(model => {
+        model.classList.remove('visible')
+        const modelSearch = model.dataset.model.replace(/\s+/g, '').toLowerCase()
+        if (modelSearch.search(inputTarget) !== -1) {
+          model.classList.add('visible')
+        }
+      });
+
+    } else {
+      resetInput()
+    }
+  })
+
+  document.querySelector('.choice-model__input-icon-del').addEventListener('click', () => {
+    inputSearch.value = ''
+    resetInput()
+  })
+
+  if (window.innerWidth <= 800) {
+    const modelBlocks = document.querySelectorAll('.choice-model__block')
+    const btnMoreModel = document.querySelector('.choice-model__btn-more')
+
+    let show = false;
+
+    for (let i = 8; i < modelBlocks.length; i++) {
+      modelBlocks[i].style.display = 'none';
+    }
+
+    btnMoreModel.addEventListener('click', () => {
+      btnMoreModel.classList.toggle('btn-more-visible')
+
+      if (!show) {
+        show = true
+        for (let i = 8; i < modelBlocks.length; i++) {
+          modelBlocks[i].style.display = 'flex';
+        }
+      } else {
+        show = false
+        for (let i = 8; i < modelBlocks.length; i++) {
+          modelBlocks[i].style.display = 'none';
+        }
+      }
+    })
+  }
+
+</script>
