@@ -2539,9 +2539,18 @@ body._lock {
 }
 @media screen and (max-width: 700px) {
   .choice-model__blocks-model-list {
+    display: none;
     column-count: 1;
     margin-top: 40px;
     margin-bottom: 25px;
+    max-height: 0;
+    visibility: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .choice-model__blocks-model-list.visible {
+    display: block;
+    max-height: 100%;
+    visibility: visible;
   }
 }
 .choice-model__block {
@@ -2573,7 +2582,7 @@ body._lock {
   justify-content: center;
   margin-right: 25px;
   width: 30px;
-  height: 20px;
+  height: 22px;
 }
 @media screen and (max-width: 700px) {
   .choice-model__img {

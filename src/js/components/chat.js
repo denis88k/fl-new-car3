@@ -217,12 +217,10 @@ const chat3 = () => {
 				removeClassArray(blockChoiceAll, 'active');
 				// доб. класс active на нажатый выбор
 				addClass(block, 'active');
-				if (msgAnswer) {
-					// ответ берём из data блока на который нажали
-					msgAnswer.innerText = block.dataset.choice;
-					// показываем сообщение ответ клиента
-					addClass(msgAnswer, 'msg-show');
-				}
+				// ответ берём из data блока на который нажали
+				msgAnswer.innerText = block.dataset.choice;
+				// показываем сообщение ответ клиента
+				addClass(msgAnswer, 'msg-show');
 				// прокрутка вниз, до сообщения с ответом клиента, т.е. внизу окажется сообщение ответ клиента
 				// console.log('вниз до сообщения ответа клиента');
 				scrollEndChat();
@@ -239,11 +237,9 @@ const chat3 = () => {
 					// срабатывает когда нажимаешь на блок с выборами, на другой вариант
 					// и тогда удаляются все активные классы в других темах чата
 					// console.log('заново choice');
-					if (msgAnswer) {
-						// ====скрываем сообщение ответ клиента:
-						removeClass(msgAnswer, 'msg-show');
-						msgAnswer.innerText = block.dataset.choice;
-					}
+					// ====скрываем сообщение ответ клиента:
+					removeClass(msgAnswer, 'msg-show');
+					msgAnswer.innerText = block.dataset.choice;
 					// удаляем активные классы с данного choice
 					removeClassArray(blockChoiceAll, 'active');
 					// доб. активный класс на тот блок, который нажали

@@ -233,9 +233,19 @@
 		margin-bottom: 40px;
 
 		@media screen and (max-width: 700px) {
+			display: none;
 			column-count: 1;
 			margin-top: 40px;
 			margin-bottom: 25px;
+			max-height: 0;
+			visibility: hidden;
+			transition: max-height 0.3s ease;
+
+			&.visible{
+				display: block;
+				max-height: 100%;
+				visibility: visible;
+			}
 		}
 	}
 
@@ -274,7 +284,7 @@
 		justify-content: center;
 		margin-right: 25px;
 		width: 30px;
-		height: 20px;
+		height: 22px;
 
 		@media screen and (max-width: 700px) {
 			display: flex;

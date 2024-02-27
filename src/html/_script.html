@@ -125,29 +125,13 @@
   })
 
   if (window.innerWidth <= 800) {
-    const modelBlocks = document.querySelectorAll('.choice-model__block')
     const btnMoreModel = document.querySelector('.choice-model__btn-more')
-
-    let show = false;
-
-    for (let i = 8; i < modelBlocks.length; i++) {
-      modelBlocks[i].style.display = 'none';
-    }
+    const modelBlockList = document.querySelector('.choice-model__blocks-model-list')
 
     btnMoreModel.addEventListener('click', () => {
       btnMoreModel.classList.toggle('btn-more-visible')
 
-      if (!show) {
-        show = true
-        for (let i = 8; i < modelBlocks.length; i++) {
-          modelBlocks[i].style.display = 'flex';
-        }
-      } else {
-        show = false
-        for (let i = 8; i < modelBlocks.length; i++) {
-          modelBlocks[i].style.display = 'none';
-        }
-      }
+      modelBlockList.classList.toggle('visible')
     })
   }
 
