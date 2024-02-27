@@ -3234,10 +3234,10 @@ input::-webkit-inner-spin-button {
 }
 
 @media screen and (max-width: 800px) {
-  .chat-messages[data-chat="1"] .chat__message-block-choice {
+  .chat-messages[data-chat="1"] .chat__message-block-choice.msg-show {
     position: relative;
   }
-  .chat-messages[data-chat="1"] .chat__message-block-choice::after {
+  .chat-messages[data-chat="1"] .chat__message-block-choice.msg-show::after {
     content: "";
     position: absolute;
     left: -100px;
@@ -3247,12 +3247,12 @@ input::-webkit-inner-spin-button {
     height: 101.5%;
     background-color: #F2F1F6;
   }
-  .chat-messages[data-chat="1"] .chat__message-block-choice .car-card__blocks {
+  .chat-messages[data-chat="1"] .chat__message-block-choice.msg-show .car-card__blocks {
     position: relative;
     z-index: 1;
     grid-template-columns: repeat(8, 1fr);
   }
-  .chat-messages[data-chat="1"] .chat__message-block-choice .car-card__block {
+  .chat-messages[data-chat="1"] .chat__message-block-choice.msg-show .car-card__block {
     display: flex;
     flex-direction: column;
     border-radius: 20px;
