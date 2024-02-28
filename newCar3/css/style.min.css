@@ -3281,11 +3281,13 @@ input::-webkit-inner-spin-button {
     position: relative;
     z-index: 1;
     grid-template-columns: repeat(8, 1fr);
+    gap: 12px;
   }
   .chat-messages[data-chat="1"] .chat__message-block-choice.msg-show .car-card__block {
     display: flex;
     flex-direction: column;
     border-radius: 20px;
+    height: fit-content;
     background-color: white;
   }
   .chat-messages[data-chat="1"] .car-card__img {
@@ -3296,12 +3298,13 @@ input::-webkit-inner-spin-button {
     height: 105px;
   }
   .chat-messages[data-chat="1"] .car-card__title-amount {
+    margin-top: 10px;
     margin-bottom: 1px;
     margin-left: 10px;
   }
   .chat-messages[data-chat="1"] .car-card__title {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 19.7px;
     line-height: 20px;
   }
   .chat-messages[data-chat="1"] .car-card__amount {
@@ -3309,12 +3312,13 @@ input::-webkit-inner-spin-button {
   }
   .chat-messages[data-chat="1"] .car-card__price-discount {
     align-items: center;
+    margin-top: 3px;
     margin-bottom: 5px;
     margin-left: 10px;
   }
   .chat-messages[data-chat="1"] .car-card__price {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 15.7px;
     line-height: 17.6px;
     color: #E63535;
   }
